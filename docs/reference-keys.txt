@@ -1,4 +1,5 @@
 fig:mop
+tab:bulkvssingle
 fig:top
 why-single-cell-analysis
 single-cell-rna-seq-technologies

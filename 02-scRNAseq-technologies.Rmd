@@ -16,18 +16,9 @@ knitr::include_graphics("figures/thoughput.JPG")
 
 Technological advances increase the efficiency of single-cell sequencing methods
 while the cost decreases day by day. In this chapter, we will briefly go through
-some of the single-cell RNAseq technologies, as listed below:
+some of the single-cell RNA-seq technologies.
 
-- SMART-seq
-- MARS-seq
-- Droplet microfluidics (DROP-seq)
-- 10x Genomics Chromium
-- Nanowell platforms
-- Sample indexing (Illumina)
-- Single-cell combinatorial indexing: sciRNA-seq
-
-
-## SMART-seq
+## SMART-seq2
 
 
 ## MARS-seq
@@ -36,7 +27,7 @@ some of the single-cell RNAseq technologies, as listed below:
 ## Droplet Microfluidics (DROP-seq)
 
 
-## 10x Genomics Chromium
+## 10X Genomics Chromium
 
 
 ## Nanowell Platforms

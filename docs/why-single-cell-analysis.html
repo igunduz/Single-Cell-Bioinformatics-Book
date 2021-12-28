@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 1 Why Single-Cell Analysis? | Single-Cell Bioinformatics</title>
-  <meta name="description" content="Chapter 1 Why Single-Cell Analysis? | Single-Cell Bioinformatics" />
+  <title>Chapter 1 Why Single-Cell Analysis? | Single-Cell Bioinformatics: From Technology to Analysis Methodologies</title>
+  <meta name="description" content="Chapter 1 Why Single-Cell Analysis? | Single-Cell Bioinformatics: From Technology to Analysis Methodologies" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 1 Why Single-Cell Analysis? | Single-Cell Bioinformatics" />
+  <meta property="og:title" content="Chapter 1 Why Single-Cell Analysis? | Single-Cell Bioinformatics: From Technology to Analysis Methodologies" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 1 Why Single-Cell Analysis? | Single-Cell Bioinformatics" />
+  <meta name="twitter:title" content="Chapter 1 Why Single-Cell Analysis? | Single-Cell Bioinformatics: From Technology to Analysis Methodologies" />
   
   
   
@@ -92,7 +92,7 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Single-Cell Bioinformatics</a></li>
+<li><a href="./">Single-Cell Bioinformatics: From Technology to Analysis Methodologies </a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preferance</a></li>
@@ -102,7 +102,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.1" data-path="single-cell-rna-seq-technologies.html"><a href="single-cell-rna-seq-technologies.html#smart-seq"><i class="fa fa-check"></i><b>2.1</b> SMART-seq</a></li>
 <li class="chapter" data-level="2.2" data-path="single-cell-rna-seq-technologies.html"><a href="single-cell-rna-seq-technologies.html#mars-seq"><i class="fa fa-check"></i><b>2.2</b> MARS-seq</a></li>
 <li class="chapter" data-level="2.3" data-path="single-cell-rna-seq-technologies.html"><a href="single-cell-rna-seq-technologies.html#droplet-microfluidics-drop-seq"><i class="fa fa-check"></i><b>2.3</b> Droplet Microfluidics (DROP-seq)</a></li>
-<li class="chapter" data-level="2.4" data-path="single-cell-rna-seq-technologies.html"><a href="single-cell-rna-seq-technologies.html#x-genomics-chromium"><i class="fa fa-check"></i><b>2.4</b> 10x Genomics Chromium</a></li>
+<li class="chapter" data-level="2.4" data-path="single-cell-rna-seq-technologies.html"><a href="single-cell-rna-seq-technologies.html#x-genomics-chromium"><i class="fa fa-check"></i><b>2.4</b> 10X Genomics Chromium</a></li>
 <li class="chapter" data-level="2.5" data-path="single-cell-rna-seq-technologies.html"><a href="single-cell-rna-seq-technologies.html#nanowell-platforms"><i class="fa fa-check"></i><b>2.5</b> Nanowell Platforms</a></li>
 <li class="chapter" data-level="2.6" data-path="single-cell-rna-seq-technologies.html"><a href="single-cell-rna-seq-technologies.html#sample-indexing-illumina"><i class="fa fa-check"></i><b>2.6</b> Sample Indexing (Illumina)</a></li>
 <li class="chapter" data-level="2.7" data-path="single-cell-rna-seq-technologies.html"><a href="single-cell-rna-seq-technologies.html#single-cell-combinatorial-indexing-scirna-seq"><i class="fa fa-check"></i><b>2.7</b> Single-cell Combinatorial Indexing: sciRNA-seq</a></li>
@@ -128,7 +128,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Single-Cell Bioinformatics</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Single-Cell Bioinformatics: From Technology to Analysis Methodologies</a>
           </h1>
         </div>
 
@@ -144,9 +144,9 @@ the popularity of the single-cell sequencing improved. However, why do we need
 to use a sequencing method focused on a single cell when we can have bulk
 sequencing data?</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:mop"></span>
-<img src="https://cdn.10xgenomics.com/image/upload/f_auto,q_auto,w_680,h_510,c_limit/v1574196658/blog/singlecell-v.-bulk-image.png" alt="10X Genomics Molecular Profiling of Single-Cell vs Bulk Sequencing" width="80%" />
+<img src="https://cdn.10xgenomics.com/image/upload/f_auto,q_auto,w_680,h_510,c_limit/v1574196658/blog/singlecell-v.-bulk-image.png" alt="10X Genomics Molecular Profiling of Single-Cell vs Bulk Sequencing [-@10xGenomics2019]" width="80%" />
 <p class="caption">
-FIGURE 1.1: 10X Genomics Molecular Profiling of Single-Cell vs Bulk Sequencing
+FIGURE 1.1: 10X Genomics Molecular Profiling of Single-Cell vs Bulk Sequencing <span class="citation">(<a href="#ref-10xGenomics2019" role="doc-biblioref">2019</a>)</span>
 </p>
 </div>
 <p>The short answer is the limitations of bulk sequencing. Despite the higher cost
@@ -155,12 +155,12 @@ be obtained from bulk sequencing. Especially in cases where cellular
 heterogeneity is extremely important such as cancer, using single-cell
 sequencing can be useful. In Table 1, the comparison between bulk and
 single-cell sequencing was given.</p>
-<p>Table 1: Bulk vs Single-Cell Sequencing</p>
 <table>
+<caption><span id="tab:bulkvssingle">TABLE 1.1: </span> Properties of Bulk vs Single-Cell Sequencing</caption>
 <thead>
 <tr class="header">
-<th align="center">Bulk</th>
-<th align="center">Single-Cell</th>
+<th align="center">Bulk Sequencing</th>
+<th align="center">Single-Cell Sequencing</th>
 </tr>
 </thead>
 <tbody>
@@ -173,7 +173,7 @@ single-cell sequencing was given.</p>
 <td align="center">Rare cell types can be lost</td>
 </tr>
 <tr class="odd">
-<td align="center">Cell aggregates</td>
+<td align="center">Cellular heterogeneity is masked</td>
 <td align="center">Resolves cellular heterogeneity</td>
 </tr>
 <tr class="even">
@@ -181,8 +181,12 @@ single-cell sequencing was given.</p>
 <td align="center">Data can be sparse and noisy</td>
 </tr>
 <tr class="odd">
-<td align="center">Robost</td>
+<td align="center">Is a more robost technology</td>
 <td align="center">Increases statistical power</td>
+</tr>
+<tr class="even">
+<td align="center">Cell aggregates</td>
+<td align="center">Can be costly</td>
 </tr>
 </tbody>
 </table>
@@ -190,6 +194,9 @@ single-cell sequencing was given.</p>
 </div>
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-10xGenomics2019" class="csl-entry">
+10xGenomics. 2019. <span>“<span class="nocase">Single-Cell RNA-Seq: An Introductory Overview and Tools for Getting Started. Retrieved 06-08-2019. https://community.10xgenomics.com/t5/10x-Blog/Single-Cell-RNA-Seq-An-Introductory-Overview-and-Tools-for/ba-p/547</span>.”</span> <em>10xGenomics</em>, 5–9. <a href="https://www.10xgenomics.com/blog/single-cell-rna-seq-an-introductory-overview-and-tools-for-getting-started">https://www.10xgenomics.com/blog/single-cell-rna-seq-an-introductory-overview-and-tools-for-getting-started</a>.
+</div>
 <div id="ref-Nature2013" class="csl-entry">
 <span>“<span class="nocase">Method of the Year 2013</span>.”</span> 2014. Nature Publishing Group. <a href="https://doi.org/10.1038/nmeth.2801">https://doi.org/10.1038/nmeth.2801</a>.
 </div>

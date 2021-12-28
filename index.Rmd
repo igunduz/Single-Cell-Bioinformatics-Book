@@ -1,5 +1,5 @@
 --- 
-title: "Single-Cell Bioinformatics"
+title: "Single-Cell Bioinformatics: From Technology to Analysis Methodologies "
 author: "İrem B. GÜNDÜZ"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site

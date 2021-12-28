@@ -3,6 +3,6 @@ bookdown::gitbook:
   config:
     toc:
       before: |
-        <li><a href="./">Single-Cell Bioinformatics</a></li>
+        <li><a href="./">Single-Cell Bioinformatics: From Technology to Analysis Methodologies </a></li>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
