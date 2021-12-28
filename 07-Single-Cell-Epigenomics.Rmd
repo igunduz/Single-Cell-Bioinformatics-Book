@@ -1,0 +1,11 @@
+\mainmatter
+
+```{r Epigenomics, include=FALSE}
+knitr::opts_chunk$set(echo      = TRUE,
+                      message   = FALSE, 
+                      error     = FALSE,
+                      cache     = TRUE,
+                      fig.align = 'center')
+```
+
+# Single-Cell Epigenomics

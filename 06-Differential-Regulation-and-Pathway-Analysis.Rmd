@@ -1,0 +1,11 @@
+\mainmatter
+
+```{r diff, include=FALSE}
+knitr::opts_chunk$set(echo      = TRUE,
+                      message   = FALSE, 
+                      error     = FALSE,
+                      cache     = TRUE,
+                      fig.align = 'center')
+```
+
+# Differential Regulation and Pathway Analysis in Single-Cell

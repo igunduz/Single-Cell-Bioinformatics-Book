@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 1 Why Single-Cell Analysis? | The Book of A Cell: Single Cell Technologies and Analysis</title>
-  <meta name="description" content="Chapter 1 Why Single-Cell Analysis? | The Book of A Cell: Single Cell Technologies and Analysis" />
+  <title>Chapter 4 Methods Used in Single-Cell | The Book of A Cell: Single Cell Technologies and Analysis</title>
+  <meta name="description" content="Chapter 4 Methods Used in Single-Cell | The Book of A Cell: Single Cell Technologies and Analysis" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 1 Why Single-Cell Analysis? | The Book of A Cell: Single Cell Technologies and Analysis" />
+  <meta property="og:title" content="Chapter 4 Methods Used in Single-Cell | The Book of A Cell: Single Cell Technologies and Analysis" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 1 Why Single-Cell Analysis? | The Book of A Cell: Single Cell Technologies and Analysis" />
+  <meta name="twitter:title" content="Chapter 4 Methods Used in Single-Cell | The Book of A Cell: Single Cell Technologies and Analysis" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="single-cell-rna-seq-technologies.html"/>
+<link rel="prev" href="single-cell-rna-seq-data-processing-and-quality-control.html"/>
+<link rel="next" href="cell-trajectory-inference.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -136,71 +136,17 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="why-single-cell-analysis" class="section level1" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Why Single-Cell Analysis?</h1>
-<p>Single-cell sequencing was selected as the method of the year in 2013 by Nature.
-<span class="citation">(<a href="#ref-Nature2013" role="doc-biblioref">2014</a>)</span> Ever since then, besides of the methodology and the algorithms,
-the popularity of the single-cell sequencing improved. However, why do we need
-to use a sequencing method focused on a single cell when we can have bulk
-sequencing data?</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mop"></span>
-<img src="https://cdn.10xgenomics.com/image/upload/f_auto,q_auto,w_680,h_510,c_limit/v1574196658/blog/singlecell-v.-bulk-image.png" alt="10X Genomics Molecular Profiling of Single-Cell vs Bulk Sequencing" width="80%" />
-<p class="caption">
-FIGURE 1.1: 10X Genomics Molecular Profiling of Single-Cell vs Bulk Sequencing
-</p>
-</div>
-<p>The short answer is the limitations of bulk sequencing. Despite the higher cost
-and sparsity of single-cell sequencing, it can capture information that cannot
-be obtained from bulk sequencing. Especially in cases where cellular
-heterogeneity is extremely important such as cancer, using single-cell
-sequencing can be useful. In Table 1, the comparison between bulk and
-single-cell sequencing was given.</p>
-<p>Table 1: Bulk vs Single-Cell Sequencing</p>
-<table>
-<thead>
-<tr class="header">
-<th align="center">Bulk</th>
-<th align="center">Single-Cell</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">Average gene expression from all cells</td>
-<td align="center">Each cell acts as a unique sample</td>
-</tr>
-<tr class="even">
-<td align="center">Average might not be representative</td>
-<td align="center">Rare cell types can be lost</td>
-</tr>
-<tr class="odd">
-<td align="center">Cell aggregates</td>
-<td align="center">Resolves cellular heterogeneity</td>
-</tr>
-<tr class="even">
-<td align="center">Data is dense</td>
-<td align="center">Data can be sparse and noisy</td>
-</tr>
-<tr class="odd">
-<td align="center">Robost</td>
-<td align="center">Increases statistical power</td>
-</tr>
-</tbody>
-</table>
+<div id="methods-used-in-single-cell" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Methods Used in Single-Cell</h1>
 
-</div>
-<h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-Nature2013" class="csl-entry">
-<span>“<span class="nocase">Method of the Year 2013</span>.”</span> 2014. Nature Publishing Group. <a href="https://doi.org/10.1038/nmeth.2801">https://doi.org/10.1038/nmeth.2801</a>.
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="single-cell-rna-seq-technologies.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="single-cell-rna-seq-data-processing-and-quality-control.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="cell-trajectory-inference.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -231,7 +177,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/igunduz/the-book-of-a-cell/edit/master/01-Introduction.Rmd",
+"link": "https://github.com/igunduz/the-book-of-a-cell/edit/master/04-Single-Cell-Methods.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -239,7 +185,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/igunduz/the-book-of-a-cell/blob/master/01-Introduction.Rmd",
+"link": "https://github.com/igunduz/the-book-of-a-cell/blob/master/04-Single-Cell-Methods.Rmd",
 "text": null
 },
 "download": null,

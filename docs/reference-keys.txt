@@ -10,3 +10,11 @@ nanowell-platforms
 sample-indexing-illumina
 single-cell-combinatorial-indexing-scirna-seq
 single-cell-rna-seq-data-processing-and-quality-control
+methods-used-in-single-cell
+cell-trajectory-inference
+differential-regulation-and-pathway-analysis-in-single-cell
+single-cell-epigenomics
+single-cell-atac-seq
+single-cell-data-integration
+single-cell-multiomics
+single-cell-spatial-transcriptomics
