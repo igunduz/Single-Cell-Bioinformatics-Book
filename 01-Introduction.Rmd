@@ -35,7 +35,7 @@ Table 1: Bulk vs Single-Cell Sequencing
 Average gene expression from all cells  Each cell acts as a unique sample
 Average might not be representative     Rare cell types can be lost
 Cell aggregates                         Resolves cellular heterogeneity
-Dense Data                                   Can be sparse and noisy
+Data is dense                             Data can be sparse and noisy
 Robost                                     Increases statistical power
 
 
