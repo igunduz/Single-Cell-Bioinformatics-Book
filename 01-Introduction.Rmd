@@ -1,4 +1,42 @@
-# Introduction to Single Cell Methodologies
+\mainmatter
+
+```{r setupinto, include=FALSE}
+knitr::opts_chunk$set(echo      = TRUE,
+                      message   = FALSE, 
+                      error     = FALSE,
+                      cache     = TRUE,
+                      fig.align = 'center')
+```
+
+#  Why Single-Cell Analysis?
+
+Single-cell sequencing was selected as the method of the year in 2013 by Nature.
+[-@Nature2013] Ever since then, besides of the methodology and the algorithms,
+the popularity of the single-cell sequencing improved.  However, why do we need
+to use a sequencing method focused on a single cell when we can have bulk
+sequencing data?
+
+```{r echo=FALSE, mop, out.width='80%', fig.show='hold', fig.cap="10X Genomics Molecular Profiling of Single-Cell vs Bulk Sequencing"}
+knitr::include_graphics("https://cdn.10xgenomics.com/image/upload/f_auto,q_auto,w_680,h_510,c_limit/v1574196658/blog/singlecell-v.-bulk-image.png")
+```
+
+The short answer is the limitations of bulk sequencing. Despite the higher cost
+and sparsity of single-cell sequencing, it can capture information that cannot
+be obtained from bulk sequencing. Especially in cases where cellular
+heterogeneity is extremely important such as cancer, using single-cell
+sequencing can be useful. In Table 1, the comparison between bulk and
+single-cell sequencing was given.
+
+
+Table 1: Bulk vs Single-Cell Sequencing 
+
+    Bulk                                         Single-Cell
+------------------------------------   --------------------------------------
+Average gene expression from all cells  Each cell acts as a unique sample
+Average might not be representative     Rare cell types can be lost
+Cell aggregates                         Resolves cellular heterogeneity
+Dense Data                                   Can be sparse and noisy
+Robost                                     Increases statistical power
 
 
 

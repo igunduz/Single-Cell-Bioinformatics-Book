@@ -1,8 +1,10 @@
 --- 
-title: "Single Cell Analysis with R"
+title: "The Book of A Cell: Single Cell Technologies and Analysis"
 author: "İrem B. GÜNDÜZ"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
+bibliography: references.bib  
+link-citations: true
 ---
 
 # Preferance {-}

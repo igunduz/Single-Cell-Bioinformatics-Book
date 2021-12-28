@@ -1,0 +1,49 @@
+\mainmatter
+
+```{r snRNA, include=FALSE}
+knitr::opts_chunk$set(echo      = TRUE,
+                      message   = FALSE, 
+                      error     = FALSE,
+                      cache     = TRUE,
+                      fig.align = 'center')
+```
+
+# Single-Cell RNA-seq Technologies
+
+```{r echo=FALSE, top, out.width='150%', fig.show='hold', fig.cap="Explosion of scRNA-seq Throughput [-@Svensson2018] "}
+knitr::include_graphics("figures/thoughput.JPG")
+```
+
+Technological advances increase the efficiency of single-cell sequencing methods
+while the cost decreases day by day. In this chapter, we will briefly go through some of the single-cell RNAseq technologies, as listed below:
+
+- SMART-seq
+- MARS-seq
+- Droplet microfluidics (DROP-seq)
+- 10x Genomics Chromium
+- Nanowell platforms
+- Sample indexing (Illumina)
+- Single-cell combinatorial indexing: sciRNA-seq
+
+
+## SMART-seq
+
+
+## MARS-seq
+
+
+## Droplet Microfluidics (DROP-seq)
+
+
+## 10x Genomics Chromium
+
+
+## Nanowell Platforms
+
+
+## Sample Indexing (Illumina)
+
+
+## Single-cell Combinatorial Indexing: sciRNA-seq
+
+

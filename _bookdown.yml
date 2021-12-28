@@ -3,6 +3,7 @@ output_dir: docs
 delete_merged_file: true
 edit: https://github.com/igunduz/the-book-of-a-cell/edit/master/%s
 view: https://github.com/igunduz/the-book-of-a-cell/blob/master/%s
+clean: [packages.bib, references.bib]
 language:
   label:
     fig: "FIGURE "

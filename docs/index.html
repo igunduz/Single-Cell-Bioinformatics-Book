@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Single Cell Analysis with R</title>
-  <meta name="description" content="Single Cell Analysis with R" />
+  <title>The Book of A Cell: Single Cell Technologies and Analysis</title>
+  <meta name="description" content="The Book of A Cell: Single Cell Technologies and Analysis" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Single Cell Analysis with R" />
+  <meta property="og:title" content="The Book of A Cell: Single Cell Technologies and Analysis" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Single Cell Analysis with R" />
+  <meta name="twitter:title" content="The Book of A Cell: Single Cell Technologies and Analysis" />
   
   
   
@@ -32,7 +32,7 @@
   
   
 
-<link rel="next" href="introduction-to-single-cell-methodologies.html"/>
+<link rel="next" href="why-single-cell-analysis.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -56,6 +56,28 @@
 
 
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -70,11 +92,23 @@
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Single Cell Analysis with R</a></li>
+<li><a href="./">The Book of A Cell: Single Cell Technologies and Analysis</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preferance</a></li>
-<li class="chapter" data-level="1" data-path="introduction-to-single-cell-methodologies.html"><a href="introduction-to-single-cell-methodologies.html"><i class="fa fa-check"></i><b>1</b> Introduction to Single Cell Methodologies</a></li>
+<li class="chapter" data-level="1" data-path="why-single-cell-analysis.html"><a href="why-single-cell-analysis.html"><i class="fa fa-check"></i><b>1</b> Why Single-Cell Analysis?</a></li>
+<li class="chapter" data-level="2" data-path="single-cell-rna-seq-technologies.html"><a href="single-cell-rna-seq-technologies.html"><i class="fa fa-check"></i><b>2</b> Single-Cell RNA-seq Technologies</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="single-cell-rna-seq-technologies.html"><a href="single-cell-rna-seq-technologies.html#smart-seq"><i class="fa fa-check"></i><b>2.1</b> SMART-seq</a></li>
+<li class="chapter" data-level="2.2" data-path="single-cell-rna-seq-technologies.html"><a href="single-cell-rna-seq-technologies.html#mars-seq"><i class="fa fa-check"></i><b>2.2</b> MARS-seq</a></li>
+<li class="chapter" data-level="2.3" data-path="single-cell-rna-seq-technologies.html"><a href="single-cell-rna-seq-technologies.html#droplet-microfluidics-drop-seq"><i class="fa fa-check"></i><b>2.3</b> Droplet Microfluidics (DROP-seq)</a></li>
+<li class="chapter" data-level="2.4" data-path="single-cell-rna-seq-technologies.html"><a href="single-cell-rna-seq-technologies.html#x-genomics-chromium"><i class="fa fa-check"></i><b>2.4</b> 10x Genomics Chromium</a></li>
+<li class="chapter" data-level="2.5" data-path="single-cell-rna-seq-technologies.html"><a href="single-cell-rna-seq-technologies.html#nanowell-platforms"><i class="fa fa-check"></i><b>2.5</b> Nanowell Platforms</a></li>
+<li class="chapter" data-level="2.6" data-path="single-cell-rna-seq-technologies.html"><a href="single-cell-rna-seq-technologies.html#sample-indexing-illumina"><i class="fa fa-check"></i><b>2.6</b> Sample Indexing (Illumina)</a></li>
+<li class="chapter" data-level="2.7" data-path="single-cell-rna-seq-technologies.html"><a href="single-cell-rna-seq-technologies.html#single-cell-combinatorial-indexing-scirna-seq"><i class="fa fa-check"></i><b>2.7</b> Single-cell Combinatorial Indexing: sciRNA-seq</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="single-cell-rna-seq-data-processing-and-quality-control.html"><a href="single-cell-rna-seq-data-processing-and-quality-control.html"><i class="fa fa-check"></i><b>3</b> Single-cell RNA-seq Data Processing and Quality Control</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -86,7 +120,7 @@
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Single Cell Analysis with R</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The Book of A Cell: Single Cell Technologies and Analysis</a>
           </h1>
         </div>
 
@@ -95,7 +129,7 @@
 
             <section class="normal" id="section-">
 <div id="header">
-<h1 class="title">Single Cell Analysis with R</h1>
+<h1 class="title">The Book of A Cell: Single Cell Technologies and Analysis</h1>
 <p class="author"><em>İrem B. GÜNDÜZ</em></p>
 <p class="date"><em>2021-12-28</em></p>
 </div>
@@ -109,7 +143,7 @@
         </div>
       </div>
 
-<a href="introduction-to-single-cell-methodologies.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="why-single-cell-analysis.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
