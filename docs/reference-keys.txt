@@ -1,9 +1,13 @@
 fig:mop
 tab:bulkvssingle
 fig:top
+fig:dropseq1
+fig:dropseq2A
+fig:dropseq2B
+fig:Genomicsx10
 why-single-cell-analysis
 single-cell-rna-seq-technologies
-smart-seq
+plate-based-smart-seq
 mars-seq
 droplet-microfluidics-drop-seq
 x-genomics-chromium

@@ -24,7 +24,7 @@
 <meta name="author" content="İrem B. GÜNDÜZ" />
 
 
-<meta name="date" content="2021-12-28" />
+<meta name="date" content="2021-12-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -99,7 +99,7 @@ div.csl-indent {
 <li class="chapter" data-level="1" data-path="why-single-cell-analysis.html"><a href="why-single-cell-analysis.html"><i class="fa fa-check"></i><b>1</b> Why Single-Cell Analysis?</a></li>
 <li class="chapter" data-level="2" data-path="single-cell-rna-seq-technologies.html"><a href="single-cell-rna-seq-technologies.html"><i class="fa fa-check"></i><b>2</b> Single-Cell RNA-seq Technologies</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="single-cell-rna-seq-technologies.html"><a href="single-cell-rna-seq-technologies.html#smart-seq"><i class="fa fa-check"></i><b>2.1</b> SMART-seq</a></li>
+<li class="chapter" data-level="2.1" data-path="single-cell-rna-seq-technologies.html"><a href="single-cell-rna-seq-technologies.html#plate-based-smart-seq"><i class="fa fa-check"></i><b>2.1</b> Plate-Based SMART-seq</a></li>
 <li class="chapter" data-level="2.2" data-path="single-cell-rna-seq-technologies.html"><a href="single-cell-rna-seq-technologies.html#mars-seq"><i class="fa fa-check"></i><b>2.2</b> MARS-seq</a></li>
 <li class="chapter" data-level="2.3" data-path="single-cell-rna-seq-technologies.html"><a href="single-cell-rna-seq-technologies.html#droplet-microfluidics-drop-seq"><i class="fa fa-check"></i><b>2.3</b> Droplet Microfluidics (DROP-seq)</a></li>
 <li class="chapter" data-level="2.4" data-path="single-cell-rna-seq-technologies.html"><a href="single-cell-rna-seq-technologies.html#x-genomics-chromium"><i class="fa fa-check"></i><b>2.4</b> 10X Genomics Chromium</a></li>
@@ -147,17 +147,75 @@ FIGURE 2.1: Explosion of scRNA-seq Throughput <span class="citation">(<a href="#
 <p>Technological advances increase the efficiency of single-cell sequencing methods
 while the cost decreases day by day. In this chapter, we will briefly go through
 some of the single-cell RNA-seq technologies.</p>
-<div id="smart-seq" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> SMART-seq</h2>
+<div id="plate-based-smart-seq" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Plate-Based SMART-seq</h2>
 </div>
 <div id="mars-seq" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> MARS-seq</h2>
 </div>
 <div id="droplet-microfluidics-drop-seq" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> Droplet Microfluidics (DROP-seq)</h2>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:dropseq1"></span>
+<img src="figures/DROP-seq.JPG" alt="Extraction and Processing of Single-Cell Transcriptomes by Drop-Seq [-@Macosko2015] " width="140%" />
+<p class="caption">
+FIGURE 2.2: Extraction and Processing of Single-Cell Transcriptomes by Drop-Seq <span class="citation">(<a href="#ref-Macosko2015" role="doc-biblioref">2015</a>)</span>
+</p>
+</div>
+<p>DROP-seq enables high throughput profiling of thousands of individual cells in a
+short period of time by encapsulating each cell individually with a unique
+barcode in a droplet. The process takes place within a microfluidic device.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:dropseq2A"></span>
+<img src="figures/DROP-seq2A.JPG" alt="Drop-Seq barcoding scheme" width="150%" />
+<p class="caption">
+FIGURE 2.3: Drop-Seq barcoding scheme
+</p>
+</div>
+<p>After dissociating the complex tissue sample into individual cells, each cell is
+suspended in droplets with microparticle beads which deliver barcoded primers
+within a microfluidic device. When cells within the droplet are lysed, the mRNA
+of these cells is attached to microparticles.A set of beads are generated with
+the reverse transcription of mRNAs into cDNAs. These sets of beads are called
+<code>STAMPs</code>, “single-cell transcriptomes attached to microparticles.” Finally, an
+RNA-seq library with about 10,000 single-cell transcriptomes was constructed by
+barcode <code>STAMPs</code> amplifying.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:dropseq2B"></span>
+<img src="figures/DROP-seq2B.JPG" alt="Sequence of primers on the microparticle" width="150%" />
+<p class="caption">
+FIGURE 2.4: Sequence of primers on the microparticle
+</p>
+</div>
+<p>Each barcoded primer bead contains an unique cell barcode and, an unique
+molecular identifiers <code>(UMI)s</code> along with the common PCR handle. The common PCR
+handle sequences used for PCR amplification after <code>STAMPs</code> formation. The cell
+barcodes are unique for each droplets, therefore, each microparticles contains
+primers with the same cell barcode. <code>UMIs</code> are unique barcodes to each
+transcript, <code>UMIs</code> are counted digitially to count unique number of mRNA
+transcripts. And, counting <code>UMIs</code> also removes the uncertainty of PCR
+duplicates from transcript copy numbers.</p>
+<p>Limitations :</p>
+<ul>
+<li>One issue of this method is most of the droplets are empty and, very few of the
+droplets contains both a cell and microparticle.</li>
+</ul>
 </div>
 <div id="x-genomics-chromium" class="section level2" number="2.4">
 <h2><span class="header-section-number">2.4</span> 10X Genomics Chromium</h2>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:Genomicsx10"></span>
+<img src="figures/10XGenomics.jpg" alt="10x Genomics Chromium scheme [-@Zheng2017]" width="150%" />
+<p class="caption">
+FIGURE 2.5: 10x Genomics Chromium scheme <span class="citation">(<a href="#ref-Zheng2017" role="doc-biblioref">2017</a>)</span>
+</p>
+</div>
+<p>The 10X Genomics method is very similar to DROP-seq and, it is first described
+in <span class="citation">(<a href="#ref-Zheng2017" role="doc-biblioref">2017</a>)</span>. First, the barcoded beads are mixed with the cell suspension.
+Then, the mixture is capsulated with the emulsion generated by oil. The
+microfluidic device and the barcoded beads of the 10X Genomics are engineered to
+increase the efficiency of barcoding cells. Therefore almost 90% of the droplets
+contain a cell and a barcoded bead. The main difference between the 10X Genomics
+Chromium and DROP-seq is the reverse transcription occurs within the droplets.
+After the amplification process, the transcriptomics library is constructed. For
+each lanes of a 10X Genomics Chromium chip, approximately 20,000 cells can be
+barcoded and sequenced simultaneously.</p>
 </div>
 <div id="nanowell-platforms" class="section level2" number="2.5">
 <h2><span class="header-section-number">2.5</span> Nanowell Platforms</h2>
@@ -172,8 +230,14 @@ some of the single-cell RNA-seq technologies.</p>
 </div>
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Macosko2015" class="csl-entry">
+Macosko, Evan Z., Anindita Basu, Rahul Satija, James Nemesh, Karthik Shekhar, Melissa Goldman, Itay Tirosh, et al. 2015. <span>“Highly Parallel Genome-Wide Expression Profiling of Individual Cells Using Nanoliter Droplets.”</span> <em>Cell</em> 161 (5): 1202–14. https://doi.org/<a href="https://doi.org/10.1016/j.cell.2015.05.002">https://doi.org/10.1016/j.cell.2015.05.002</a>.
+</div>
 <div id="ref-Svensson2018" class="csl-entry">
 Svensson, Valentine, Roser Vento-Tormo, and Sarah A. Teichmann. 2018. <span>“<span class="nocase">Exponential scaling of single-cell RNA-seq in the past decade</span>.”</span> Nature Publishing Group. <a href="https://doi.org/10.1038/nprot.2017.149">https://doi.org/10.1038/nprot.2017.149</a>.
+</div>
+<div id="ref-Zheng2017" class="csl-entry">
+Zheng, Grace, Jessica Terry, Phillip Belgrader, Paul Ryvkin, Zachary Bent, Ryan Wilson, Solongo Ziraldo, et al. 2017. <span>“Massively Parallel Digital Transcriptional Profiling of Single Cells.”</span> <em>Nature Communications</em> 8 (January): 14049. <a href="https://doi.org/10.1038/ncomms14049">https://doi.org/10.1038/ncomms14049</a>.
 </div>
 </div>
             </section>

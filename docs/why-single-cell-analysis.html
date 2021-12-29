@@ -24,7 +24,7 @@
 <meta name="author" content="İrem B. GÜNDÜZ" />
 
 
-<meta name="date" content="2021-12-28" />
+<meta name="date" content="2021-12-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -99,7 +99,7 @@ div.csl-indent {
 <li class="chapter" data-level="1" data-path="why-single-cell-analysis.html"><a href="why-single-cell-analysis.html"><i class="fa fa-check"></i><b>1</b> Why Single-Cell Analysis?</a></li>
 <li class="chapter" data-level="2" data-path="single-cell-rna-seq-technologies.html"><a href="single-cell-rna-seq-technologies.html"><i class="fa fa-check"></i><b>2</b> Single-Cell RNA-seq Technologies</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="single-cell-rna-seq-technologies.html"><a href="single-cell-rna-seq-technologies.html#smart-seq"><i class="fa fa-check"></i><b>2.1</b> SMART-seq</a></li>
+<li class="chapter" data-level="2.1" data-path="single-cell-rna-seq-technologies.html"><a href="single-cell-rna-seq-technologies.html#plate-based-smart-seq"><i class="fa fa-check"></i><b>2.1</b> Plate-Based SMART-seq</a></li>
 <li class="chapter" data-level="2.2" data-path="single-cell-rna-seq-technologies.html"><a href="single-cell-rna-seq-technologies.html#mars-seq"><i class="fa fa-check"></i><b>2.2</b> MARS-seq</a></li>
 <li class="chapter" data-level="2.3" data-path="single-cell-rna-seq-technologies.html"><a href="single-cell-rna-seq-technologies.html#droplet-microfluidics-drop-seq"><i class="fa fa-check"></i><b>2.3</b> Droplet Microfluidics (DROP-seq)</a></li>
 <li class="chapter" data-level="2.4" data-path="single-cell-rna-seq-technologies.html"><a href="single-cell-rna-seq-technologies.html#x-genomics-chromium"><i class="fa fa-check"></i><b>2.4</b> 10X Genomics Chromium</a></li>
@@ -149,12 +149,14 @@ sequencing data?</p>
 FIGURE 1.1: 10X Genomics Molecular Profiling of Single-Cell vs Bulk Sequencing <span class="citation">(<a href="#ref-10xGenomics2019" role="doc-biblioref">2019</a>)</span>
 </p>
 </div>
-<p>The short answer is the limitations of bulk sequencing. Despite the higher cost
-and sparsity of single-cell sequencing, it can capture information that cannot
-be obtained from bulk sequencing. Especially in cases where cellular
-heterogeneity is extremely important such as cancer, using single-cell
-sequencing can be useful. In Table 1, the comparison between bulk and
-single-cell sequencing was given.</p>
+<p>The short answer is the limitations of bulk sequencing. If you want to analyze
+the immune response profiles of different patients using blood samples, using
+bulk sequencing data may not be beneficial. Blood is a complex mixture of
+various cell types. The bulk sequencing averages all cells within the sample. As
+a result, the data you have will be the average expression profile of all cells
+in the sample. Single-cell sequencing technology allows profiling different
+cells in samples. In Table 1, the comparison between bulk and single-cell
+sequencing was given.</p>
 <table>
 <caption><span id="tab:bulkvssingle">TABLE 1.1: </span> Properties of Bulk vs Single-Cell Sequencing</caption>
 <thead>

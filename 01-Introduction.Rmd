@@ -20,12 +20,14 @@ sequencing data?
 knitr::include_graphics("https://cdn.10xgenomics.com/image/upload/f_auto,q_auto,w_680,h_510,c_limit/v1574196658/blog/singlecell-v.-bulk-image.png")
 ```
 
-The short answer is the limitations of bulk sequencing. Despite the higher cost
-and sparsity of single-cell sequencing, it can capture information that cannot
-be obtained from bulk sequencing. Especially in cases where cellular
-heterogeneity is extremely important such as cancer, using single-cell
-sequencing can be useful. In Table 1, the comparison between bulk and
-single-cell sequencing was given.
+The short answer is the limitations of bulk sequencing. If you want to analyze
+the immune response profiles of different patients using blood samples, using
+bulk sequencing data may not be beneficial. Blood is a complex mixture of
+various cell types. The bulk sequencing averages all cells within the sample. As
+a result, the data you have will be the average expression profile of all cells
+in the sample. Single-cell sequencing technology allows profiling different
+cells in samples. In Table 1, the comparison between bulk and single-cell
+sequencing was given.
 
 
 Table: (\#tab:bulkvssingle) Properties of Bulk vs Single-Cell Sequencing 
