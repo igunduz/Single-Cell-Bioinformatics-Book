@@ -92,7 +92,16 @@ After the amplification process, the transcriptomics library is constructed. For
 each lanes of a 10X Genomics Chromium chip, approximately 20,000 cells can be
 barcoded and sequenced simultaneously.
 
+Advantages:
 
+- Commercial platform
+-  High-throughput
+-  10,000s reads per cell
+-  Fast, inexpensive
+-  3’ transcript sequencing
+-  Single-nucleus sequencing possible
+    -  Less bias by cell morphology
+    -  Only captures nuclear RNA
 
 ## Nanowell Platforms
 
