@@ -68,10 +68,10 @@ transcripts. And, counting `UMIs`  also removes the uncertainty of PCR
 duplicates from transcript copy numbers.
 
 
-Limitations : 
+*Limitations of DROP-seq: *
 
-- One issue of this method is most of the droplets are empty and, very few of the
-droplets contains both a cell and microparticle.
+- Most of the droplets are empty and, very few of the droplets contains both a
+cell and microparticle. Thus, it is not an efficient method.
 
 
 ## 10X Genomics Chromium
@@ -92,12 +92,12 @@ After the amplification process, the transcriptomics library is constructed. For
 each lanes of a 10X Genomics Chromium chip, approximately 20,000 cells can be
 barcoded and sequenced simultaneously.
 
-Advantages:
+*Advantages of 10X Genomics Chromium:*
 
-- Commercial platform
--  High-throughput
--  10,000s reads per cell
--  Fast, inexpensive
+-  10X Genomics is a commercial platform
+-  Data obtained is high-throughput
+-  Almost 10,000s reads per cell
+-  Fast, inexpensive 
 -  3’ transcript sequencing
 -  Single-nucleus sequencing possible
     -  Less bias by cell morphology

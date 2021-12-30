@@ -5,6 +5,8 @@ fig:dropseq1
 fig:dropseq2A
 fig:dropseq2B
 fig:Genomicsx10
+fig:cellRanger
+fig:cellRanger2
 why-single-cell-analysis
 single-cell-rna-seq-technologies
 plate-based-smart-seq
@@ -15,6 +17,7 @@ nanowell-platforms
 sample-indexing-illumina
 single-cell-combinatorial-indexing-scirna-seq
 single-cell-rna-seq-data-processing-and-quality-control
+cell-ranger-pipeline
 methods-used-in-single-cell
 cell-trajectory-inference
 differential-regulation-and-pathway-analysis-in-single-cell

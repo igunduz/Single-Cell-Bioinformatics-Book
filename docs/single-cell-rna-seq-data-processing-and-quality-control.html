@@ -24,7 +24,7 @@
 <meta name="author" content="İrem B. GÜNDÜZ" />
 
 
-<meta name="date" content="2021-12-29" />
+<meta name="date" content="2021-12-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -107,7 +107,10 @@ div.csl-indent {
 <li class="chapter" data-level="2.6" data-path="single-cell-rna-seq-technologies.html"><a href="single-cell-rna-seq-technologies.html#sample-indexing-illumina"><i class="fa fa-check"></i><b>2.6</b> Sample Indexing (Illumina)</a></li>
 <li class="chapter" data-level="2.7" data-path="single-cell-rna-seq-technologies.html"><a href="single-cell-rna-seq-technologies.html#single-cell-combinatorial-indexing-scirna-seq"><i class="fa fa-check"></i><b>2.7</b> Single-cell Combinatorial Indexing: sciRNA-seq</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="single-cell-rna-seq-data-processing-and-quality-control.html"><a href="single-cell-rna-seq-data-processing-and-quality-control.html"><i class="fa fa-check"></i><b>3</b> Single-cell RNA-seq Data Processing and Quality Control</a></li>
+<li class="chapter" data-level="3" data-path="single-cell-rna-seq-data-processing-and-quality-control.html"><a href="single-cell-rna-seq-data-processing-and-quality-control.html"><i class="fa fa-check"></i><b>3</b> Single-cell RNA-seq Data Processing and Quality Control</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="single-cell-rna-seq-data-processing-and-quality-control.html"><a href="single-cell-rna-seq-data-processing-and-quality-control.html#cell-ranger-pipeline"><i class="fa fa-check"></i><b>3.1</b> Cell Ranger Pipeline</a></li>
+</ul></li>
 <li class="chapter" data-level="4" data-path="methods-used-in-single-cell.html"><a href="methods-used-in-single-cell.html"><i class="fa fa-check"></i><b>4</b> Methods Used in Single-Cell</a></li>
 <li class="chapter" data-level="5" data-path="cell-trajectory-inference.html"><a href="cell-trajectory-inference.html"><i class="fa fa-check"></i><b>5</b> Cell Trajectory Inference</a></li>
 <li class="chapter" data-level="6" data-path="differential-regulation-and-pathway-analysis-in-single-cell.html"><a href="differential-regulation-and-pathway-analysis-in-single-cell.html"><i class="fa fa-check"></i><b>6</b> Differential Regulation and Pathway Analysis in Single-Cell</a></li>
@@ -138,7 +141,46 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="single-cell-rna-seq-data-processing-and-quality-control" class="section level1" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Single-cell RNA-seq Data Processing and Quality Control</h1>
+<p>To start to analyze the single-cell data, we first need to do quality control.</p>
+<div id="cell-ranger-pipeline" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Cell Ranger Pipeline</h2>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:cellRanger"></span>
+<img src="figures/Cell-Ranger.JPG" alt="Cell Ranger Pipeline [-@10xGenomics2019]" width="130%" />
+<p class="caption">
+FIGURE 3.1: Cell Ranger Pipeline <span class="citation">(<a href="#ref-10xGenomics2019" role="doc-biblioref">2019</a>)</span>
+</p>
+</div>
+<p>In 10X Genomics workflow, which is the main workflow that is commonly used
+nowdays, <code>Cell Ranger pipeline</code> is used to process Chromium single-cell data to
+generating feature-barcode matrices, reading alignment, filtering, clustering
+and perform other secondary analysis methodologies. The typical <code>Cell Ranger</code>
+results looks like this:</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:cellRanger2"></span>
+<img src="figures/Cell-Ranger2.JPG" alt="Cell Ranger Pipeline Results [-@10xGenomics2019]" width="50%" />
+<p class="caption">
+FIGURE 3.2: Cell Ranger Pipeline Results <span class="citation">(<a href="#ref-10xGenomics2019" role="doc-biblioref">2019</a>)</span>
+</p>
+</div>
+<p>In the previous chapter, we mentioned that some of the droplets may contain no
+cells. In the qc report of the <code>Cell Ranger pipeline</code>, <code>Cell Ranger</code> predicts
+the number of cells within the inputed data and print the estimation in
+“Estimated Number of Cells” section. The “Barcode Rank Plot” indicates the
+droplets that contains bead but no cell with the grey color. To determine a
+cut-off and remove noisy data, bioinformaticians benefit from this plot. The
+“Mapping” section of the report indicates percantage of reads that is aligned
+successfully to the genome.</p>
+<ul>
+<li><strong>HINT :</strong> If the mapping rate is low and, you are working with the pure data
+(eg. human data) that may indicate contamination.</li>
+</ul>
 
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-10xGenomics2019" class="csl-entry">
+10xGenomics. 2019. <span>“<span class="nocase">Single-Cell RNA-Seq: An Introductory Overview and Tools for Getting Started. Retrieved 06-08-2019. https://community.10xgenomics.com/t5/10x-Blog/Single-Cell-RNA-Seq-An-Introductory-Overview-and-Tools-for/ba-p/547</span>.”</span> <em>10xGenomics</em>, 5–9. <a href="https://www.10xgenomics.com/blog/single-cell-rna-seq-an-introductory-overview-and-tools-for-getting-started">https://www.10xgenomics.com/blog/single-cell-rna-seq-an-introductory-overview-and-tools-for-getting-started</a>.
+</div>
 </div>
             </section>
 

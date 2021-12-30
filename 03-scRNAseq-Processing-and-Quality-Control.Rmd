@@ -9,3 +9,42 @@ knitr::opts_chunk$set(echo      = TRUE,
 ```
 
 # Single-cell RNA-seq Data Processing and Quality Control
+
+To start to analyze the single-cell data, we first need to do quality control.
+
+## Cell Ranger Pipeline
+
+```{r echo=FALSE, cellRanger, out.width='130%', fig.show='hold', fig.cap="Cell Ranger Pipeline [-@10xGenomics2019]"}
+knitr::include_graphics("figures/Cell-Ranger.JPG")
+```
+
+In 10X Genomics workflow, which is the main workflow that is commonly used
+nowdays, `Cell Ranger pipeline` is used to process Chromium single-cell data to
+generating feature-barcode matrices, reading alignment, filtering, clustering
+and perform other secondary analysis methodologies. 
+
+`Cell Ranger` identifies each sample, cell and molecule. Identification done by
+using sequencing barcodes (eg. Illumina i7 and i5 indices) for samples,
+cell-specific barcodes for cells and, UMIs for molecules. The typical `Cell
+Ranger` results looks like this:
+
+```{r echo=FALSE, cellRanger2, out.width='50%', fig.show='hold', fig.cap="Cell Ranger Pipeline Results [-@10xGenomics2019]"}
+knitr::include_graphics("figures/Cell-Ranger2.JPG")
+```
+
+In the previous chapter, we mentioned that some of the droplets may contain no
+cells. In the qc summary report of the `Cell Ranger pipeline`, `Cell Ranger`
+predicts the number of cells within the inputed data and print the estimation in
+"Estimated Number of Cells" section. The "Barcode Rank Plot" indicates the
+droplets that contains bead but no cell with the grey color. To determine a
+cut-off and remove noisy data, bioinformaticians benefit from this plot. The
+"Mapping" section of the report indicates percantage of reads that is aligned
+successfully to the genome.
+
+* **HINT :** If the mapping rate is low and, you are working with the pure data
+(eg. human data) that may indicate contamination.
+
+* **NOTE :** `Cell Ranger` prints error, if there is a quality issue.
+
+
+
