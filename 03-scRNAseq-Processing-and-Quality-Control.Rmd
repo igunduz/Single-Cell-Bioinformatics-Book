@@ -10,7 +10,9 @@ knitr::opts_chunk$set(echo      = TRUE,
 
 # Single-cell RNA-seq Data Processing and Quality Control
 
-To start to analyze the single-cell data, we first need to do quality control.
+In this chapter, we will go through quality control and processing methods for
+single-cell data.
+
 
 ## Cell Ranger Pipeline
 
@@ -46,5 +48,7 @@ successfully to the genome.
 
 * **NOTE :** `Cell Ranger` prints error, if there is a quality issue.
 
-
+```{r echo=FALSE, fastqfile, out.width='150%', fig.show='hold', fig.cap="Structure of a FASTQ file"}
+knitr::include_graphics("figures/fastq-file.JPG")
+```
 

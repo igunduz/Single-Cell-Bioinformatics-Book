@@ -141,7 +141,8 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="single-cell-rna-seq-data-processing-and-quality-control" class="section level1" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Single-cell RNA-seq Data Processing and Quality Control</h1>
-<p>To start to analyze the single-cell data, we first need to do quality control.</p>
+<p>In this chapter, we will go through quality control and processing methods for
+single-cell data.</p>
 <div id="cell-ranger-pipeline" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Cell Ranger Pipeline</h2>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:cellRanger"></span>
@@ -153,8 +154,10 @@ FIGURE 3.1: Cell Ranger Pipeline <span class="citation">(<a href="#ref-10xGenomi
 <p>In 10X Genomics workflow, which is the main workflow that is commonly used
 nowdays, <code>Cell Ranger pipeline</code> is used to process Chromium single-cell data to
 generating feature-barcode matrices, reading alignment, filtering, clustering
-and perform other secondary analysis methodologies. The typical <code>Cell Ranger</code>
-results looks like this:</p>
+and perform other secondary analysis methodologies.</p>
+<p><code>Cell Ranger</code> identifies each sample, cell and molecule. Identification done by
+using sequencing barcodes (eg. Illumina i7 and i5 indices) for samples,
+cell-specific barcodes for cells and, UMIs for molecules. The typical <code>Cell Ranger</code> results looks like this:</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:cellRanger2"></span>
 <img src="figures/Cell-Ranger2.JPG" alt="Cell Ranger Pipeline Results [-@10xGenomics2019]" width="50%" />
 <p class="caption">
@@ -162,17 +165,24 @@ FIGURE 3.2: Cell Ranger Pipeline Results <span class="citation">(<a href="#ref-1
 </p>
 </div>
 <p>In the previous chapter, we mentioned that some of the droplets may contain no
-cells. In the qc report of the <code>Cell Ranger pipeline</code>, <code>Cell Ranger</code> predicts
-the number of cells within the inputed data and print the estimation in
+cells. In the qc summary report of the <code>Cell Ranger pipeline</code>, <code>Cell Ranger</code>
+predicts the number of cells within the inputed data and print the estimation in
 “Estimated Number of Cells” section. The “Barcode Rank Plot” indicates the
 droplets that contains bead but no cell with the grey color. To determine a
 cut-off and remove noisy data, bioinformaticians benefit from this plot. The
 “Mapping” section of the report indicates percantage of reads that is aligned
 successfully to the genome.</p>
 <ul>
-<li><strong>HINT :</strong> If the mapping rate is low and, you are working with the pure data
-(eg. human data) that may indicate contamination.</li>
+<li><p><strong>HINT :</strong> If the mapping rate is low and, you are working with the pure data
+(eg. human data) that may indicate contamination.</p></li>
+<li><p><strong>NOTE :</strong> <code>Cell Ranger</code> prints error, if there is a quality issue.</p></li>
 </ul>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:fastqfile"></span>
+<img src="figures/fastq-file.JPG" alt="FASTQ file structure" width="150%" />
+<p class="caption">
+FIGURE 3.3: FASTQ file structure
+</p>
+</div>
 
 </div>
 </div>
