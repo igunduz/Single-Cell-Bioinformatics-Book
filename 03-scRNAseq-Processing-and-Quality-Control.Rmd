@@ -10,8 +10,9 @@ knitr::opts_chunk$set(echo      = TRUE,
 
 # Single-cell RNA-seq Data Processing and Quality Control
 
-In this chapter, we will go through quality control and processing methods for
-single-cell data.
+Once the raw data is obtained, the first thing to do is to check the quality of
+the reads and process it accordingly. In this chapter, we will go through
+quality control and processing methods for single-cell data.
 
 
 ## Cell Ranger Pipeline
@@ -65,7 +66,7 @@ before another read identifier contains the per-base sequencing quality score
 (also called PHRED score). The formula of the PHRED score is given below where P
 is the "Probability of base calling error".
 
-```{r echo=FALSE, PHRED, out.width='50%', fig.show='hold', fig.cap="The formula of the PHRED score"}
+```{r echo=FALSE, PHRED, out.width='50%', fig.show='hold', fig.cap="The formula of the PHRED score",fig.align='center'}
 knitr::include_graphics("figures/Cell-Ranger3.JPG")
 ```
 
@@ -75,11 +76,12 @@ Sequence quality can be determined by `FASTQC tool`. `FASTQC tool` provides
 simple quality control check on raw sequence data that comes from high
 throughput sequencing pipelines. @Anders2010
 
-```{r echo=FALSE, FASTQC, out.width='150%', fig.show='hold', fig.cap="FASTQC Results"}
+```{r echo=FALSE, FASTQC, out.width='200%', fig.show='hold', fig.cap="FASTQC Results",fig.align='center'}
 knitr::include_graphics("figures/FASTQC.JPG")
 ```
 
-FASTQC tool provides:
+*FASTQC tool provides:*
+
 * Summary statistics (number of reads, …)
 * Sequencing quality summaries
 * Sequence biases
@@ -93,34 +95,81 @@ sequencer. There may be sequence biases due to structural oligonucleotides
 (adapters, etc.)  and low-quality sequences. Trimming at reading ends is done as
 the first operation in a pipeline to avoid sequence biases.
 
-```{r echo=FALSE, trimming, out.width='150%', fig.show='hold', fig.cap="High-throughput sequencing pipeline scheme"}
+```{r echo=FALSE, trimming, out.width='80%', fig.show='hold', fig.cap="High-throughput sequencing pipeline scheme",fig.align='center'}
 knitr::include_graphics("figures/trimming.JPG")
 ```
 
-There are several softwares present to apply trimming, some of them are:
+There are several softwares present to apply trimming, frequently used ones are:
 
-* CellRanger
-* cutadapt
-* Trim Galore!
-* SeqPurge
-* trimmomatic
+* [CellRanger](https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger)
+* [cutadapt](https://cutadapt.readthedocs.io/en/stable/)
+* [Trim Galore!](https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/)
+* [SeqPurge](https://hub.docker.com/r/virusx/seqpurge/dockerfile)
+* [trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic)
 
 ## Demultiplexing
 
-## Genome and transcriptome references
+```{r echo=FALSE, Demultiplexing, out.width='150%', fig.show='hold', fig.cap="Data processing pipeline workflow.",fig.align='center'}
+knitr::include_graphics("figures/Demultiplexing1.JPG")
+```
 
-## Read mapping: STAR
+Although the high-throughput sequencing methods provides data with good quality,
+errors via PCR can be introduced when preparing the library. When working with
+working with single-cell RNA sequencing data the initial cDNA libraries undergo
+PCR amplification multiple times. Thus, PCR errors are often introduced when
+preparing single-cell RNA sequencing library. Demultiplex is a simple sequencing
+error correction algorithm used to prevent this kind of errors. @Zhang2018
 
+Demultiplexing indicates identification of cell barcodes, assigning cell-barcode
+to the associated reads and, filtration of cell-barcodes. If the data contains
+UMIs, UMI codes are mapped to  the read name of the gene-body containing read.
+UMIs are counted for each cell and gene thus, duplicates are avoided. Genes are
+identified via sequence mapping. And, if the expected cell-barcodes are known,
+assigned barcodes are filtered accordingly.
 
-## Gene quantification
+Demultiplexing is done differently depending on the protocol and the pipeline of
+choice. In general, the data obtained from paired-end full transcript protocols
+and, Smart-seq2 are already be demultiplexed. If the data was not demultiplexed,
+you need to apply it yourself depending on the protocol used to produce raw
+data.
 
-## Transcript quantification: KALLISTO
+## STAR: Ultrafast Universal RNA-seq Aligner
 
-## The Single-Cell data
+After trimming and, prof the data has good quality, the data needs to be mapped
+to the corresponding reference genome. This mapping process is called alignment
+and, it is necessary if we're interested in gene expression analysis (eg.
+differential gene expression analysis, quantifying etc.) **Kallisto** and
+**STAR** are the most popular alignement tools. @Dobin2013
 
-### Gene count data matrix
+```{r echo=FALSE, STAR, out.width='250%', fig.show='hold', fig.cap="STAR workflow.[-@Piper2017]",fig.align='center'}
+knitr::include_graphics("figures/STAR.png")
+```
 
-### Sparse data representation
+In summary, **STAR** searchs for the longest sequence in the data that is also
+present in the reference genome using an uncompressed suffix array (SA). This
+process is called seed searching. The longest matching sequences are called "the
+Maximal Mappable Prefixes (MMPs)". The MMP side and the unread side are named as
+different seeds (eg *seed1*,*seed2*). After finding MMP, **STAR** searchs for
+the next the longest sequence. If an exact matching sequence for each part of
+the read is not found,the previous MMPs will be extended. And, if extending the
+previous MMPs oes not give a good alignment, then the poor quality or adapter
+sequence (or other contaminating sequence) will be soft clipped. These process
+is repeated for each for unmapped part of the read in forward and reverse
+directions. @Dobin2013 **STAR** detects splicing events in this way, because of
+that,it also called splice aware aligner.
+
+Then seeds are clustered by proximity to ‘anchor’ seeds (or uniquely mapping
+seeds) and, seeds are stitched together based on alignment score using dynamic
+programming. The scoring done based on matches, mismatches, insertions,
+deletions and splice junction gaps. @Piper2017
+
+## Transcript Quantification: KALLISTO
+
+## The Single-Cell Data
+
+### Gene Count -Matrix
+
+### Sparse Data 
  
  
  
@@ -134,13 +183,13 @@ There are several softwares present to apply trimming, some of them are:
 
 ##Empty droplets
  
-## Doublet detection and removal: demuxlet
+## Doublet detection and removal: *demuxlet*
 
-## Doublet detection and removal: DoubletFinder
+## Doublet detection and removal: *DoubletFinder*
 
-## Doublet detection and removal: Scrublet
+## Doublet detection and removal: *Scrublet*
 
-## Single-cell data issues
+## Issues of the Single-Cell Data
 
  
  
@@ -148,4 +197,5 @@ There are several softwares present to apply trimming, some of them are:
  
  
 ## Data imputation / data smoothing
+
 ## MAGIC (Markov affinity-based graph imputation of cells)

@@ -11,6 +11,8 @@ fig:fastqfile
 fig:PHRED
 fig:FASTQC
 fig:trimming
+fig:Demultiplexing
+fig:STAR
 why-single-cell-analysis
 single-cell-rna-seq-technologies
 plate-based-smart-seq
@@ -26,13 +28,11 @@ fastq-file-format
 sequencing-quality-fastqc-tool
 read-trimming
 demultiplexing
-genome-and-transcriptome-references
-read-mapping-star
-gene-quantification
+star-ultrafast-universal-rna-seq-aligner
 transcript-quantification-kallisto
 the-single-cell-data
-gene-count-data-matrix
-sparse-data-representation
+gene-count--matrix
+sparse-data
 data-normalization
 doublet-detection-and-removal-demuxlet
 doublet-detection-and-removal-doubletfinder
