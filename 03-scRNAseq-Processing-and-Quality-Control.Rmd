@@ -24,7 +24,7 @@ knitr::include_graphics("figures/Cell-Ranger.JPG")
 In 10X Genomics workflow, which is the main workflow that is commonly used
 nowdays, `Cell Ranger pipeline` is used to process Chromium single-cell data to
 generating feature-barcode matrices, reading alignment, filtering, clustering
-and perform other secondary analysis methodologies. 
+and perform other secondary analysis methodologies.@[-10xGenomics2019]
 
 `Cell Ranger` identifies each sample, cell and molecule. Identification done by
 using sequencing barcodes (eg. Illumina i7 and i5 indices) for samples,
@@ -165,11 +165,48 @@ deletions and splice junction gaps. @Piper2017
 
 ## Transcript Quantification: KALLISTO
 
+```{r echo=FALSE, Kallisto, out.width='80%', fig.show='hold', fig.cap="Kallisto workflow.[-@Bray2016]",fig.align='center'}
+knitr::include_graphics("figures/Kallipso.JPG")
+```
+
+While **STAR** is a read-alinger, **Kallisto** is a pseudo-aligner. That means,
+while **STAR** mapp reads to a reference genome, **Kallisto** mapps k-mers.
+**Kallisto** assign reads to transcripts without assigning specific positions
+for each base. Instead, it uses a *Transcriptome de Bruijn Graph (T-DBG)*. A
+k-mer is a nucleotide sequence that length k derived from a read. Each
+transcript act as a path  through the graph and, transcriptome reference
+represented as consecutive k-mers. Kallisto maps reads to splice isoforms rather
+than genes.@Bray2016
+
+*EM-algorithm* is used to estimate transcript abundance and  optimize
+compatibility (likelihood). Intersection of vertex compatibility classes
+indicates compatible transcripts.
+
+
+```{r echo=FALSE, Kallisto2,out.width='50%', fig.show='hold', fig.cap="The EM-algorithm formula. ",fig.align='center'}
+knitr::include_graphics("figures/Kallipso2.jpg")
+```
+
+
+K-mers of reads can be mapped to vertices using their exact matches (also called
+*hashing*). Read compatibility is found by matching the read mapping with
+transcript-induced paths (compatibility classes). It is much more faster than
+read-aligners.  Pseudo-aligners can cope better with sequencing errors. For
+example, if k is sufficiently large, the error k-mers may not be part of the
+transcriptome and can be ignored.
+
+
 ## The Single-Cell Data
 
-### Gene Count -Matrix
 
-### Sparse Data 
+```{r echo=FALSE, scdata,out.width='100%', fig.show='hold', fig.cap="Representation of the single-cell count data ",fig.align='center'}
+knitr::include_graphics("figures/scdata.png")
+```
+
+
+The raw counts of single-cell data are integers. The count matrices are sparse
+but, high dimensional. Therefore, feature selection and, dimensional reduction
+methods are necessary.
  
  
  
