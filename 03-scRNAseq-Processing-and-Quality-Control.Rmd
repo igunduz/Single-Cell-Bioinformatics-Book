@@ -48,7 +48,104 @@ successfully to the genome.
 
 * **NOTE :** `Cell Ranger` prints error, if there is a quality issue.
 
+### FASTQ File Format 
+
+High-throughput sequencing reads usually outputs `FASTQ` files. `Cell Ranger`
+pipeline produces `FASTQ` files as well. Let's take a look at the `FASTQ` file
+format below.
+
 ```{r echo=FALSE, fastqfile, out.width='150%', fig.show='hold', fig.cap="Structure of a FASTQ file"}
 knitr::include_graphics("figures/fastq-file.JPG")
 ```
 
+Each `FASTQ` file contains three parts. The first line of the `FASTQ` file that
+starts with `@`, contains the read identifier, which indicates the position on
+the flowcell. The DNA sequence starts from the second line. And the line comes
+before another read identifier contains the per-base sequencing quality score
+(also called PHRED score). The formula of the PHRED score is given below where P
+is the "Probability of base calling error".
+
+```{r echo=FALSE, PHRED, out.width='50%', fig.show='hold', fig.cap="The formula of the PHRED score"}
+knitr::include_graphics("figures/Cell-Ranger3.JPG")
+```
+
+### Sequencing Quality : FASTQC tool
+
+Sequence quality can be determined by `FASTQC tool`. `FASTQC tool` provides
+simple quality control check on raw sequence data that comes from high
+throughput sequencing pipelines. @Anders2010
+
+```{r echo=FALSE, FASTQC, out.width='150%', fig.show='hold', fig.cap="FASTQC Results"}
+knitr::include_graphics("figures/FASTQC.JPG")
+```
+
+FASTQC tool provides:
+* Summary statistics (number of reads, …)
+* Sequencing quality summaries
+* Sequence biases
+* Duplicate reads
+* Sequence contamination (adapters, etc.)
+
+### Read trimming
+
+Sequencing data analysis pipelines modify the read sequences produced by a
+sequencer. There may be sequence biases due to structural oligonucleotides
+(adapters, etc.)  and low-quality sequences. Trimming at reading ends is done as
+the first operation in a pipeline to avoid sequence biases.
+
+```{r echo=FALSE, trimming, out.width='150%', fig.show='hold', fig.cap="High-throughput sequencing pipeline scheme"}
+knitr::include_graphics("figures/trimming.JPG")
+```
+
+There are several softwares present to apply trimming, some of them are:
+
+* CellRanger
+* cutadapt
+* Trim Galore!
+* SeqPurge
+* trimmomatic
+
+## Demultiplexing
+
+## Genome and transcriptome references
+
+## Read mapping: STAR
+
+
+## Gene quantification
+
+## Transcript quantification: KALLISTO
+
+## The Single-Cell data
+
+### Gene count data matrix
+
+### Sparse data representation
+ 
+ 
+ 
+## Data normalization
+
+##Dealing with Batch Effects
+
+##Data cleanup (filtering)
+
+##Empty droplets
+
+##Empty droplets
+ 
+## Doublet detection and removal: demuxlet
+
+## Doublet detection and removal: DoubletFinder
+
+## Doublet detection and removal: Scrublet
+
+## Single-cell data issues
+
+ 
+ 
+ 
+ 
+ 
+## Data imputation / data smoothing
+## MAGIC (Markov affinity-based graph imputation of cells)
