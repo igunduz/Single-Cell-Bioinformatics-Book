@@ -176,14 +176,14 @@ for each base. Instead, it uses a *Transcriptome de Bruijn Graph (T-DBG)*. A
 k-mer is a nucleotide sequence that length k derived from a read. Each
 transcript act as a path  through the graph and, transcriptome reference
 represented as consecutive k-mers. Kallisto maps reads to splice isoforms rather
-than genes.@Bray2016
+than genes. @Bray2016
 
 *EM-algorithm* is used to estimate transcript abundance and  optimize
 compatibility (likelihood). Intersection of vertex compatibility classes
 indicates compatible transcripts.
 
 
-```{r echo=FALSE, Kallisto2,out.width='50%', fig.show='hold', fig.cap="The EM-algorithm formula. ",fig.align='center'}
+```{r echo=FALSE, Kallisto2,out.width='50%', fig.show='hold', fig.cap="The EM algorithm formula. ",fig.align='center'}
 knitr::include_graphics("figures/Kallipso2.jpg")
 ```
 
@@ -208,18 +208,35 @@ The raw counts of single-cell data are integers. The count matrices are sparse
 but, high dimensional. Therefore, feature selection and, dimensional reduction
 methods are necessary.
  
- 
+```{r echo=FALSE, scdata2,out.width='80%', fig.show='hold', fig.cap="Representation of the sparse data [-@Eding2009]",fig.align='center'}
+knitr::include_graphics("figures/scdata2.gif")
+```
+
+If the matrix has zero values for most elements, it can be considered as sparse
+data. The sparsity can be determined by the *Number of Non-Zero (NNZ)* ratio of
+elements. If the *NNZ* ratio is above 0.5 data can be considered as sparse data.
+
+```{r echo=FALSE, scdata3,out.width='80%', fig.show='hold', fig.cap="Representation of the Coordinate Matrix (COO) [-@Eding2009]",fig.align='center'}
+knitr::include_graphics("figures/scdata.gif")
+```
+
+To save memory, the sparse data can be stored in a *coordinate matrix (COO)*.
+Only the non-zero elements stored as vectors and their respective indices in a
+*COO*. Thus, more efficient and less biased computation can be done on data.
+
+```{r echo=FALSE, scdata4,out.width='80%', fig.show='hold', fig.cap="Compressed Sparse Row/Column[-@Eding2009]",fig.align='center'}
+knitr::include_graphics("figures/scdata3.gif")
+```
  
 ## Data normalization
 
-##Dealing with Batch Effects
+## Dealing with Batch Effects
 
-##Data cleanup (filtering)
+## Data cleanup (filtering)
 
-##Empty droplets
+## Empty Droplets
 
-##Empty droplets
- 
+
 ## Doublet detection and removal: *demuxlet*
 
 ## Doublet detection and removal: *DoubletFinder*
