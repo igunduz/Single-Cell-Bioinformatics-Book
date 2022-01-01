@@ -127,8 +127,8 @@ div.csl-indent {
 <li class="chapter" data-level="3.11" data-path="single-cell-rna-seq-data-processing-and-quality-control.html"><a href="single-cell-rna-seq-data-processing-and-quality-control.html#doublet-detection-and-removal-doubletfinder"><i class="fa fa-check"></i><b>3.11</b> Doublet detection and removal: <em>DoubletFinder</em></a></li>
 <li class="chapter" data-level="3.12" data-path="single-cell-rna-seq-data-processing-and-quality-control.html"><a href="single-cell-rna-seq-data-processing-and-quality-control.html#doublet-detection-and-removal-scrublet"><i class="fa fa-check"></i><b>3.12</b> Doublet detection and removal: <em>Scrublet</em></a></li>
 <li class="chapter" data-level="3.13" data-path="single-cell-rna-seq-data-processing-and-quality-control.html"><a href="single-cell-rna-seq-data-processing-and-quality-control.html#issues-of-the-single-cell-data"><i class="fa fa-check"></i><b>3.13</b> Issues of the Single-Cell Data</a></li>
-<li class="chapter" data-level="3.14" data-path="single-cell-rna-seq-data-processing-and-quality-control.html"><a href="single-cell-rna-seq-data-processing-and-quality-control.html#data-imputation-data-smoothing"><i class="fa fa-check"></i><b>3.14</b> Data imputation / data smoothing</a></li>
-<li class="chapter" data-level="3.15" data-path="single-cell-rna-seq-data-processing-and-quality-control.html"><a href="single-cell-rna-seq-data-processing-and-quality-control.html#magic-markov-affinity-based-graph-imputation-of-cells"><i class="fa fa-check"></i><b>3.15</b> MAGIC (Markov affinity-based graph imputation of cells)</a></li>
+<li class="chapter" data-level="3.14" data-path="single-cell-rna-seq-data-processing-and-quality-control.html"><a href="single-cell-rna-seq-data-processing-and-quality-control.html#data-imputation-data-smoothing"><i class="fa fa-check"></i><b>3.14</b> Data imputation / Data Smoothing</a></li>
+<li class="chapter" data-level="3.15" data-path="single-cell-rna-seq-data-processing-and-quality-control.html"><a href="single-cell-rna-seq-data-processing-and-quality-control.html#magic-markov-affinity-based-graph-imputation-of-cells"><i class="fa fa-check"></i><b>3.15</b> MAGIC (Markov Affinity-based Graph Imputation of Cells)</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="methods-used-in-single-cell.html"><a href="methods-used-in-single-cell.html"><i class="fa fa-check"></i><b>4</b> Methods Used in Single-Cell</a></li>
 <li class="chapter" data-level="5" data-path="cell-trajectory-inference.html"><a href="cell-trajectory-inference.html"><i class="fa fa-check"></i><b>5</b> Cell Trajectory Inference</a></li>
@@ -174,7 +174,7 @@ FIGURE 3.1: Cell Ranger Pipeline <span class="citation">(<a href="#ref-10xGenomi
 <p>In 10X Genomics workflow, which is the main workflow that is commonly used
 nowdays, <code>Cell Ranger pipeline</code> is used to process Chromium single-cell data to
 generating feature-barcode matrices, reading alignment, filtering, clustering
-and perform other secondary analysis methodologies.@[-10xGenomics2019]</p>
+and perform other secondary analysis methodologies.<span class="citation">(<a href="#ref-10xGenomics2019" role="doc-biblioref">2019</a>)</span></p>
 <p><code>Cell Ranger</code> identifies each sample, cell and molecule. Identification done by
 using sequencing barcodes (eg. Illumina i7 and i5 indices) for samples,
 cell-specific barcodes for cells and, UMIs for molecules. The typical <code>Cell Ranger</code> results looks like this:</p>
@@ -423,7 +423,7 @@ several methods present for normalizing the single-cell sequencing data. <span c
 <li><em>Within-sample normalization.</em></li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:wsnormalization"></span>
-<img src="figures/datanorm2.png" alt="Within-sample normalization formulas." width="70%" />
+<img src="figures/datanorm2.png" alt="Within-sample normalization formulas." width="50%" />
 <p class="caption">
 FIGURE 3.17: Within-sample normalization formulas.
 </p>
@@ -432,7 +432,7 @@ FIGURE 3.17: Within-sample normalization formulas.
 <li><em>Non-linear normalization</em></li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:nnnormalization"></span>
-<img src="figures/datanorm3.PNG" alt="Non-linear normalization formulas." width="70%" />
+<img src="figures/datanorm3.PNG" alt="Non-linear normalization formulas." width="50%" />
 <p class="caption">
 FIGURE 3.18: Non-linear normalization formulas.
 </p>
@@ -441,7 +441,7 @@ FIGURE 3.18: Non-linear normalization formulas.
 <li><em>Scaling: z-score</em></li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Scaling"></span>
-<img src="figures/datanorm4.PNG" alt="Scaling: z-score formula." width="70%" />
+<img src="figures/datanorm4.PNG" alt="Scaling: z-score formula." width="50%" />
 <p class="caption">
 FIGURE 3.19: Scaling: z-score formula.
 </p>
@@ -467,11 +467,30 @@ FIGURE 3.19: Scaling: z-score formula.
 <div id="dealing-with-batch-effects" class="section level2" number="3.7">
 <h2><span class="header-section-number">3.7</span> Dealing with Batch Effects</h2>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Batch"></span>
-<img src="figures/batcheffect.png" alt="Representation of batch effect and, the ComBat formula." width="80%" />
+<img src="figures/batcheffect.png" alt="Representation of batch effect and, the ComBat formula." width="60%" />
 <p class="caption">
 FIGURE 3.20: Representation of batch effect and, the ComBat formula.
 </p>
 </div>
+<p>There may be variations in the single-cell sequencing data due to confounding
+factors. These variations are called <em>batch effects</em>. Ideally, <em>batch effects</em>
+needs to be identified and corrected. <em>Batch effects</em> can be identified in
+exploratory analysis (dimensionality reduction, clustering, etc.) if adequate
+annotation is provided. Identified <em>batch effects</em> can be corrected by simple
+linear models (eg <em>ComBat: empirical Bayes approach</em>). The confounding factors
+that may cause <em>batch effects</em> are listed as below:</p>
+<ul>
+<li><p>Cell collection date</p></li>
+<li><p>Instruments and protocols used</p></li>
+<li><p>Cell environments</p></li>
+<li><p>Genetic population</p></li>
+<li><p>Factors that are not the focus of the analysis</p></li>
+<li><p><strong>NOTE:</strong> <em>Batch effects</em> can only be corrected for if experiments are
+designed in a non-confounded way.</p>
+<ul>
+<li>Sample groups need to be split across experimental batches</li>
+</ul></li>
+</ul>
 </div>
 <div id="data-cleanup-filtering" class="section level2" number="3.8">
 <h2><span class="header-section-number">3.8</span> Data cleanup (filtering)</h2>
@@ -492,10 +511,60 @@ FIGURE 3.20: Representation of batch effect and, the ComBat formula.
 <h2><span class="header-section-number">3.13</span> Issues of the Single-Cell Data</h2>
 </div>
 <div id="data-imputation-data-smoothing" class="section level2" number="3.14">
-<h2><span class="header-section-number">3.14</span> Data imputation / data smoothing</h2>
+<h2><span class="header-section-number">3.14</span> Data imputation / Data Smoothing</h2>
+<p>We already mentioned that single-cell data is noisy due to missing data and
+stochastic transcription. Missing values can be imputed via several methods,
+this process called <em>data smoothing</em> (eg <em>data imputation</em>).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:Smoothing"></span>
+<img src="figures/smoothing.PNG" alt="Representation of Data imputation / Data Smoothing in single-cell RNA-seq data" width="60%" />
+<p class="caption">
+FIGURE 3.21: Representation of Data imputation / Data Smoothing in single-cell RNA-seq data
+</p>
+</div>
+<p>Imputation may be beneficial however, we must be careful with over smoothing.
+Over smoothing indicates false positives in differential analysis or artificial
+clusters. To detect over smoothing, downstream analysis on smoothed data needs
+to be carefully considered. <span class="citation"><a href="#ref-Andrews2018" role="doc-biblioref">Andrews and Hemberg</a> (<a href="#ref-Andrews2018" role="doc-biblioref">2018</a>)</span></p>
+<p>Here are the most popular imputation tools/softwares:</p>
+<ul>
+<li><strong>scImpute</strong>: log-normal model detects dropout events and imputes using
+profiles from similar cells</li>
+<li><strong>SAVER</strong>: negative binomial distribution
+modeling</li>
+<li><strong>Knn-smooth</strong>: nearest neighbors</li>
+<li><strong>dca</strong>: autoencoder</li>
+<li><strong>MAGIC</strong>: diffusion</li>
+<li><strong>netSmooth</strong></li>
+</ul>
 </div>
 <div id="magic-markov-affinity-based-graph-imputation-of-cells" class="section level2" number="3.15">
-<h2><span class="header-section-number">3.15</span> MAGIC (Markov affinity-based graph imputation of cells)</h2>
+<h2><span class="header-section-number">3.15</span> MAGIC (Markov Affinity-based Graph Imputation of Cells)</h2>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:MAGIC"></span>
+<img src="figures/MAGIC.png" alt="Imputation with MAGIC [-@VanDijk2018]" width="80%" />
+<p class="caption">
+FIGURE 3.22: Imputation with MAGIC <span class="citation">(<a href="#ref-VanDijk2018" role="doc-biblioref">2018</a>)</span>
+</p>
+</div>
+<p><strong>MAGIC</strong> is one of the sophisticated imputation/smoothing methods. <strong>MAGIC</strong>
+assumes that neighbors are informative. In summary, <strong>MAGIC</strong> algorithm
+calculates the gene scores signal across neighbors (nearby) cells and, impute
+gene scores based on this signal. The overall <strong>MAGIC</strong> workflow is given below.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:MAGIC2"></span>
+<img src="figures/MAGIC2.PNG" alt="The MAGIC workflow [-@VanDijk2018]" width="40%" />
+<p class="caption">
+FIGURE 3.23: The MAGIC workflow <span class="citation">(<a href="#ref-VanDijk2018" role="doc-biblioref">2018</a>)</span>
+</p>
+</div>
+<p><strong>MAGIC</strong> calculates the distance between neighbors and, the affinity of the
+neighbors. Then, learns from this manifold data with the implemented manifold
+learning algorithm. As a result, <strong>MAGIC</strong> construct a graph and, use it to
+impute the features. <span class="citation"><a href="#ref-VanDijk2018" role="doc-biblioref">Dijk et al.</a> (<a href="#ref-VanDijk2018" role="doc-biblioref">2018</a>)</span></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:MAGIC3"></span>
+<img src="figures/MAGIC3.png" alt="The formulas used in MAGIC imputation [-@VanDijk2018]" width="65%" />
+<p class="caption">
+FIGURE 3.24: The formulas used in MAGIC imputation <span class="citation">(<a href="#ref-VanDijk2018" role="doc-biblioref">2018</a>)</span>
+</p>
+</div>
 
 </div>
 </div>
@@ -507,8 +576,14 @@ FIGURE 3.20: Representation of batch effect and, the ComBat formula.
 <div id="ref-Anders2010" class="csl-entry">
 Anders, Simon. 2010. <span>“<span class="nocase">Babraham Bioinformatics - FastQC A Quality Control tool for High Throughput Sequence Data</span>.”</span> <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/">https://www.bioinformatics.babraham.ac.uk/projects/fastqc/</a>.
 </div>
+<div id="ref-Andrews2018" class="csl-entry">
+Andrews, Tallulah S., and Martin Hemberg. 2018. <span>“<span class="nocase">False signals induced by single-cell imputation</span>.”</span> <em>F1000Research</em> 7: 1740. <a href="https://doi.org/10.12688/f1000research.16613.1">https://doi.org/10.12688/f1000research.16613.1</a>.
+</div>
 <div id="ref-Bray2016" class="csl-entry">
 Bray, Nicolas L., Harold Pimentel, Páll Melsted, and Lior Pachter. 2016. <span>“<span class="nocase">Near-optimal probabilistic RNA-seq quantification</span>.”</span> <em>Nature Biotechnology</em> 34 (5): 525–27. <a href="https://doi.org/10.1038/nbt.3519">https://doi.org/10.1038/nbt.3519</a>.
+</div>
+<div id="ref-VanDijk2018" class="csl-entry">
+Dijk, David van, Roshan Sharma, Juozas Nainys, Kristina Yim, Pooja Kathail, Ambrose J. Carr, Cassandra Burdziak, et al. 2018. <span>“<span class="nocase">Recovering Gene Interactions from Single-Cell Data Using Data Diffusion</span>.”</span> <em>Cell</em> 174 (3): 716–729.e27. <a href="https://doi.org/10.1016/j.cell.2018.05.061">https://doi.org/10.1016/j.cell.2018.05.061</a>.
 </div>
 <div id="ref-Dobin2013" class="csl-entry">
 Dobin, Alexander, Carrie A. Davis, Felix Schlesinger, Jorg Drenkow, Chris Zaleski, Sonali Jha, Philippe Batut, Mark Chaisson, and Thomas R. Gingeras. 2013. <span>“<span class="nocase">STAR: Ultrafast universal RNA-seq aligner</span>.”</span> <em>Bioinformatics</em> 29 (1): 15–21. <a href="https://doi.org/10.1093/bioinformatics/bts635">https://doi.org/10.1093/bioinformatics/bts635</a>.

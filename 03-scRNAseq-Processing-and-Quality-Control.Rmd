@@ -24,7 +24,7 @@ knitr::include_graphics("figures/Cell-Ranger.JPG")
 In 10X Genomics workflow, which is the main workflow that is commonly used
 nowdays, `Cell Ranger pipeline` is used to process Chromium single-cell data to
 generating feature-barcode matrices, reading alignment, filtering, clustering
-and perform other secondary analysis methodologies.@[-10xGenomics2019]
+and perform other secondary analysis methodologies.[-@10xGenomics2019]
 
 `Cell Ranger` identifies each sample, cell and molecule. Identification done by
 using sequencing barcodes (eg. Illumina i7 and i5 indices) for samples,
@@ -290,9 +290,28 @@ knitr::include_graphics("figures/datanorm4.PNG")
 
 ## Dealing with Batch Effects
 
-```{r echo=FALSE, Batch,out.width='70%', fig.show='hold', fig.cap="Representation of batch effect and, the ComBat formula.",fig.align='center'}
+```{r echo=FALSE, Batch,out.width='60%', fig.show='hold', fig.cap="Representation of batch effect and, the ComBat formula.",fig.align='center'}
 knitr::include_graphics("figures/batcheffect.png")
 ```
+
+There may be variations in the single-cell sequencing data due to confounding
+factors. These variations are called *batch effects*. Ideally, *batch effects*
+needs to be identified and corrected. *Batch effects* can  be identified in
+exploratory analysis (dimensionality reduction, clustering, etc.) if adequate
+annotation is provided. Identified *batch effects* can be corrected by simple
+linear models (eg *ComBat: empirical Bayes approach*). The confounding factors
+that may cause *batch effects* are listed as below:
+
+* Cell collection date
+* Instruments and protocols used
+* Cell environments
+* Genetic population
+* Factors that are not the focus of the analysis
+
+* **NOTE:** *Batch effects* can only be corrected for if experiments are
+designed in a non-confounded way.
+    - Sample groups need to be split across experimental batches
+
 
 ## Data cleanup (filtering)
 
@@ -312,6 +331,53 @@ knitr::include_graphics("figures/batcheffect.png")
  
  
  
-## Data imputation / data smoothing
+## Data imputation / Data Smoothing
 
-## MAGIC (Markov affinity-based graph imputation of cells)
+We already mentioned that single-cell data is noisy due to missing data and
+stochastic transcription. Missing values can be imputed via several methods,
+this process called *data smoothing* (eg *data imputation*). 
+
+```{r echo=FALSE, Smoothing,out.width='60%', fig.show='hold', fig.cap="Representation of Data imputation / Data Smoothing in single-cell RNA-seq data",fig.align='center'}
+knitr::include_graphics("figures/smoothing.PNG")
+```
+
+Imputation may be beneficial however, we must be careful with over smoothing.
+Over smoothing indicates false positives in differential analysis or artificial
+clusters. To detect over smoothing, downstream analysis on smoothed data needs
+to be carefully considered. @Andrews2018
+
+Here are the most popular imputation tools/softwares:
+
+* **scImpute**: log-normal model detects dropout events and imputes using
+profiles from similar cells
+* **SAVER**: negative binomial distribution
+modeling
+* **Knn-smooth**: nearest neighbors
+* **dca**: autoencoder
+* **MAGIC**: diffusion
+* **netSmooth** 
+
+## MAGIC (Markov Affinity-based Graph Imputation of Cells)
+
+```{r echo=FALSE, MAGIC,out.width='80%', fig.show='hold', fig.cap="Imputation with MAGIC [-@VanDijk2018]",fig.align='center'}
+knitr::include_graphics("figures/MAGIC.png")
+```
+
+**MAGIC** is one of the sophisticated imputation/smoothing methods. **MAGIC**
+assumes that neighbors are informative. In summary, **MAGIC** algorithm
+calculates the gene scores signal across neighbors (nearby) cells and, impute
+gene scores based on this signal. The overall **MAGIC** workflow is given below.
+
+```{r echo=FALSE, MAGIC2,out.width='40%', fig.show='hold', fig.cap="The MAGIC workflow [-@VanDijk2018]",fig.align='center'}
+knitr::include_graphics("figures/MAGIC2.PNG")
+```
+
+**MAGIC** calculates the distance between neighbors and, the affinity of the
+neighbors. Then, learns from this manifold data with the implemented manifold
+learning algorithm. As a result, **MAGIC** construct a graph and, use it to
+impute the features. @VanDijk2018
+
+```{r echo=FALSE, MAGIC3,out.width='65%', fig.show='hold', fig.cap="The formulas used in MAGIC imputation [-@VanDijk2018]",fig.align='center'}
+knitr::include_graphics("figures/MAGIC3.png")
+```
+

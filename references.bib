@@ -1,3 +1,38 @@
+@article{VanDijk2018,
+abstract = {Single-cell RNA sequencing technologies suffer from many sources of technical noise, including under-sampling of mRNA molecules, often termed “dropout,” which can severely obscure important gene-gene relationships. To address this, we developed MAGIC (Markov affinity-based graph imputation of cells), a method that shares information across similar cells, via data diffusion, to denoise the cell count matrix and fill in missing transcripts. We validate MAGIC on several biological systems and find it effective at recovering gene-gene relationships and additional structures. Applied to the epithilial to mesenchymal transition, MAGIC reveals a phenotypic continuum, with the majority of cells residing in intermediate states that display stem-like signatures, and infers known and previously uncharacterized regulatory interactions, demonstrating that our approach can successfully uncover regulatory relations without perturbations. A new algorithm overcomes limitations of data loss in single-cell sequencing experiments.},
+author = {van Dijk, David and Sharma, Roshan and Nainys, Juozas and Yim, Kristina and Kathail, Pooja and Carr, Ambrose J. and Burdziak, Cassandra and Moon, Kevin R. and Chaffer, Christine L. and Pattabiraman, Diwakar and Bierie, Brian and Mazutis, Linas and Wolf, Guy and Krishnaswamy, Smita and Pe'er, Dana},
+doi = {10.1016/j.cell.2018.05.061},
+file = {::},
+issn = {10974172},
+journal = {Cell},
+keywords = {EMT,imputation,manifold learning,regulatory networks,single-cell RNA sequencing},
+month = {jul},
+number = {3},
+pages = {716--729.e27},
+pmid = {29961576},
+publisher = {Cell},
+title = {{Recovering Gene Interactions from Single-Cell Data Using Data Diffusion}},
+url = {https://pubmed.ncbi.nlm.nih.gov/29961576/},
+volume = {174},
+year = {2018}
+}
+
+@article{Andrews2018,
+abstract = {Background: Single-cell RNASeq is a powerful tool for measuring gene expression at the resolution of individual cells. A significant challenge in the analysis of this data is the large amount of zero values, representing either missing data or no expression. Several imputation approaches have been proposed to deal with this issue, but since these methods generally rely on structure inherent to the dataset under consideration they may not provide any additional information. Methods: We evaluated the risk of generating false positive or irreproducible results when imputing data with five different methods. We applied each method to a variety of simulated datasets as well as to permuted real single-cell RNASeq datasets and consider the number of false positive gene-gene correlations and differentially expressed genes. Using matched 10X Chromium and Smartseq2 data from the Tabula Muris database we examined the reproducibility of markers before and after imputation. Results: The extent of false-positive signals introduced by imputation varied considerably by method. Data smoothing based methods, MAGIC and knn-smooth, generated a very high number of false-positives in both real and simulated data. Model-based imputation methods typically generated fewer false-positives but this varied greatly depending on how well datasets conformed to the underlying model. Furthermore, only SAVER exhibited reproducibility comparable to unimputed data across matched data. Conclusions: Imputation of single-cell RNASeq data introduces circularity that can generate false-positive results. Thus, statistical tests applied to imputed data should be treated with care. Additional filtering by effect size can reduce but not fully eliminate these effects. Of the methods we considered, SAVER was the least likely to generate false or irreproducible results, thus should be favoured over alternatives if imputation is necessary.},
+author = {Andrews, Tallulah S. and Hemberg, Martin},
+doi = {10.12688/f1000research.16613.1},
+issn = {20461402},
+journal = {F1000Research},
+keywords = {Gene expression,Imputation,RNA-seq,Reproducibility,Type 1 errors,single-cell},
+pages = {1740},
+pmid = {30906525},
+publisher = {F1000 Research Ltd},
+title = {{False signals induced by single-cell imputation}},
+url = {https://pubmed.ncbi.nlm.nih.gov/30906525/},
+volume = {7},
+year = {2018}
+}
+
 @article{10xGenomics2019,
 author = {10xGenomics},
 journal = {10xGenomics},
