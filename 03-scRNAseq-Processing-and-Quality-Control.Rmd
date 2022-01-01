@@ -224,13 +224,75 @@ To save memory, the sparse data can be stored in a *coordinate matrix (COO)*.
 Only the non-zero elements stored as vectors and their respective indices in a
 *COO*. Thus, more efficient and less biased computation can be done on data.
 
-```{r echo=FALSE, scdata4,out.width='80%', fig.show='hold', fig.cap="Compressed Sparse Row/Column[-@Eding2009]",fig.align='center'}
+```{r echo=FALSE, scdata4,out.width='80%', fig.show='hold', fig.cap="Compressed Sparse Row [-@Eding2009]",fig.align='center'}
 knitr::include_graphics("figures/scdata3.gif")
 ```
  
+The *Compressed Sparse Row* (*CSR*) format is designed for more efficient
+indexing and computation and, it can be considered as "read-only". The *data
+(x)* within the *CSR* consist of non-zero elements, *index (i)*.
+
+* Length = length of x 
+* Column indices of non-zero data
+
+```{r echo=FALSE, scdata5,out.width='80%', fig.show='hold', fig.cap="Compressed Sparse Column [-@Eding2009]",fig.align='center'}
+knitr::include_graphics("figures/scdata4.gif")
+```
+
+*Compressed Sparse Column* (*CSC*)  works exactly the same as *CSR*. But,
+instead of row based index,*CSC* has column based index pointers.
+
+*Pointers (p)*:
+
+* Length = number of rows + 1
+* Cumulative number of non-zero elements
+* Differences indicate number of non-zero elements per row
+
 ## Data normalization
 
+```{r echo=FALSE, normalization,out.width='80%', fig.show='hold', fig.cap="Single-cell sequencing counts",fig.align='center'}
+knitr::include_graphics("figures/datanorm.PNG")
+```
+
+Single-cell sequencing data needs to be normalized to make quantifications
+comparable across cells and, mitigate cell-specific coverage biases. There are
+several methods present for normalizing the single-cell sequencing data. @Hafemeister2019
+
+1. *Within-sample normalization.*
+
+```{r echo=FALSE, wsnormalization,out.width='50%', fig.show='hold', fig.cap="Within-sample normalization formulas.",fig.align='center'}
+knitr::include_graphics("figures/datanorm2.PNG")
+```
+
+2. *Non-linear normalization*
+
+```{r echo=FALSE, nnnormalization,out.width='50%', fig.show='hold', fig.cap="Non-linear normalization formulas.",fig.align='center'}
+knitr::include_graphics("figures/datanorm3.PNG")
+```
+
+3. *Scaling: z-score*
+
+```{r echo=FALSE, Scaling,out.width='50%', fig.show='hold', fig.cap="Scaling: z-score formula.",fig.align='center'}
+knitr::include_graphics("figures/datanorm4.PNG")
+```
+
+* Scale genes to mean 0 and variance 1
+* Weight genes equally in downstream analysis
+* Often used for visualization
+
+4. Advanced methods for computing scaling factors
+
+* *DESeq*, *edgeR*: pseudo-reference sample
+* *scran*: robustness through pooling and deconvolution of cells
+* *sctransform*: 
+    - Can incorporate other covariates besides total counts for batch correction
+    - Avoid overfitting by regularization of fitted parameters over all genes
+
 ## Dealing with Batch Effects
+
+```{r echo=FALSE, Batch,out.width='70%', fig.show='hold', fig.cap="Representation of batch effect and, the ComBat formula.",fig.align='center'}
+knitr::include_graphics("figures/batcheffect.png")
+```
 
 ## Data cleanup (filtering)
 

@@ -16,6 +16,15 @@ fig:STAR
 fig:Kallisto
 fig:Kallisto2
 fig:scdata
+fig:scdata2
+fig:scdata3
+fig:scdata4
+fig:scdata5
+fig:normalization
+fig:wsnormalization
+fig:nnnormalization
+fig:Scaling
+fig:Batch
 why-single-cell-analysis
 single-cell-rna-seq-technologies
 plate-based-smart-seq
@@ -35,6 +44,9 @@ star-ultrafast-universal-rna-seq-aligner
 transcript-quantification-kallisto
 the-single-cell-data
 data-normalization
+dealing-with-batch-effects
+data-cleanup-filtering
+empty-droplets
 doublet-detection-and-removal-demuxlet
 doublet-detection-and-removal-doubletfinder
 doublet-detection-and-removal-scrublet
