@@ -315,8 +315,49 @@ designed in a non-confounded way.
 
 ## Data cleanup (filtering)
 
+Along with the sparsity, single-cell sequencing data may contain uninformative
+data. This kind of uninformative data may be due to several reasons such as
+dying cells, cells with broken membranes and, doublets. These conditions are
+examples of outlier barcodes. We need to filter the data to remove the
+uninformative data. Filtration is done by removing the cells using metric
+thresholding ,removing genes and, removing droplets.
+
+```{r echo=FALSE, filtering,out.width='60%', fig.show='hold'}
+knitr::include_graphics("figures/filtering.PNG")
+```
+
+Remove cells using metric thresholding:
+* Number of reads per cell
+* Number of genes detected per cell
+* Mitochondrial read fraction *(indicates the death and dying cells)*
+
+Remove genes
+* Genes expressed in only few cells
+* Not all genes might be relevant in all contexts *(e.g.mitochondrial and ribosomal genes)*
+
 ## Empty Droplets
 
+One barcode should correspond to one cell, but barcodes may not tag any cell
+*(empty droplet)* or, barcodes may correspond to multiple cells *(multiplets,
+doublets)*. when removing droplets,the goal is to remove barcodes not
+corresponding to actual cells and, retain barcodes corresponding to actual cells
+with low RNA content. @Lun2019
+
+The simplest way to remove droplets is setting a threshold on UMI counts.
+
+* 99th percentile (minus 10%) of expected number of cells
+* Filter based on elbow (knee) plot 
+
+`EmptyDrops` ambient testing is another option.
+
+* Fit “ambient distribution” using barcodes below a threshold T
+* Statistically test barcodes whether they significantly deviate from the
+ambient distribution
+    * Good-Turing Smoothing algorithm to test deviation from multinomial (Dirichlet)
+distribution over all genes
+
+Or, Combine ambient testing with thresholding: add high-UMI count barcodes as
+true cells.
 
 ## Doublet detection and removal: *demuxlet*
 

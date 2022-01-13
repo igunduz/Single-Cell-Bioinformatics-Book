@@ -1,0 +1,15 @@
+\mainmatter
+
+```{r scDNAseq, include=FALSE}
+knitr::opts_chunk$set(echo      = TRUE,
+                      message   = FALSE, 
+                      error     = FALSE,
+                      cache     = TRUE,
+                      fig.align = 'center')
+```
+
+## Single-Cell DNA sequencing
+
+To detect genomic variations in the genomic heterogenetity
+
+It's most beneficial when apply to sequence bacterial genomes.
