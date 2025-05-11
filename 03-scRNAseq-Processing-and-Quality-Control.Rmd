@@ -361,17 +361,76 @@ true cells.
 
 ## Doublet detection and removal: *demuxlet*
 
+```{r echo=FALSE, demuxlet, out.width='80%', fig.show='hold', fig.cap="Doublet detection with demuxlet [-@Kang2018]", fig.align='center'}
+knitr::include_graphics("figures/demuxlet.png")
+```
+
+**demuxlet** is a method that leverages genotype information to detect doublets in genetically diverse cell populations. For each droplet, it uses the likelihood of genotyping calls to infer whether the droplet is a singlet or a doublet. The process involves:
+
+- Maximum likelihood estimation of genotype matches
+- Modeling doublets as a mixture of two genotype profiles
+- Computing posterior probability for doublet classification
+
+This approach is powerful when donor genotypes are known and enables reliable assignment of cells to individuals in multiplexed samples.
+
+---
+
 ## Doublet detection and removal: *DoubletFinder*
+
+```{r echo=FALSE, doubletfinder, out.width='80%', fig.show='hold', fig.cap="Doublet detection with DoubletFinder [-@McGinnis2019]", fig.align='center'}
+knitr::include_graphics("figures/doubletfinder.png")
+```
+
+**DoubletFinder** detects doublets by simulating artificial doublets and using a k-nearest-neighbor (KNN) classifier in PCA space. Steps include:
+
+- Normalizing data and selecting variable genes
+- Simulating doublets by merging transcriptomes
+- Embedding into PCA space
+- Computing proportion of artificial nearest neighbors (**pANN**)
+- Classifying top cells with highest pANN as doublets
+
+Parameter tuning (e.g. expected doublet rate) improves sensitivity.
+
+---
 
 ## Doublet detection and removal: *Scrublet*
 
+```{r echo=FALSE, scrublet, out.width='80%', fig.show='hold', fig.cap="Doublet detection with Scrublet [-@Wolock2019]", fig.align='center'}
+knitr::include_graphics("figures/scrublet.png")
+```
+
+**Scrublet** is a Python-based tool that uses simulation and distance-based metrics:
+
+- Simulates doublets by summing transcriptomes
+- Embeds cells into PCA space
+- Builds KNN graph and calculates doublet score
+- Thresholds doublet score to identify doublets
+
+Unlike demuxlet, Scrublet does not require genotype data and can be used with standard single-cell datasets.
+
+---
+
 ## Issues of the Single-Cell Data
 
- 
- 
- 
- 
- 
+```{r echo=FALSE, scissues, out.width='80%', fig.show='hold', fig.cap="Challenges in single-cell RNA-seq data [-@Kharchenko2014]", fig.align='center'}
+knitr::include_graphics("figures/sc_issues.png")
+```
+
+Single-cell data presents challenges:
+
+- High sparsity due to dropouts
+- Low coverage for some genes
+- Technical noise and overdispersion
+- Biological variability
+
+Common strategies to address these issues:
+
+- Normalization and scaling
+- Filtering low-quality cells/genes
+- Imputation or pseudobulk aggregation
+
+These steps ensure more accurate downstream analysis like clustering or differential expression.
+
 ## Data imputation / Data Smoothing
 
 We already mentioned that single-cell data is noisy due to missing data and

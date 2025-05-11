@@ -188,9 +188,45 @@ while the cost decreases day by day. In this chapter, we will briefly go through
 some of the single-cell RNA-seq technologies.</p>
 <div id="plate-based-smart-seq" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Plate-Based SMART-seq<a href="single-cell-rna-seq-technologies.html#plate-based-smart-seq" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>SMART-seq is a <strong>plate-based single-cell RNA-seq</strong> method that captures <strong>full-length transcripts</strong> using oligo(dT) priming and template-switching reverse transcriptase. Each cell is sorted (e.g., via FACS) into individual wells of a 96- or 384-well plate.</p>
+<p>The cDNA is amplified using PCR, and sequencing libraries are prepared from this amplified cDNA. SMART-seq and its improved version <strong>SMART-seq2</strong> are well-suited for detecting isoforms and lowly expressed genes.</p>
+<p><em>Advantages of SMART-seq:</em></p>
+<ul>
+<li>Full-length transcript coverage — useful for isoform and splicing analysis<br />
+</li>
+<li>High sensitivity, low dropout rate<br />
+</li>
+<li>Compatible with rare/low-throughput samples</li>
+</ul>
+<p><em>Limitations of SMART-seq:</em></p>
+<ul>
+<li>Lower throughput than droplet-based methods<br />
+</li>
+<li>Higher cost and hands-on time per cell<br />
+</li>
+<li>Not UMI-based — less accurate quantification</li>
+</ul>
 </div>
 <div id="mars-seq" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> MARS-seq<a href="single-cell-rna-seq-technologies.html#mars-seq" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>MARS-seq (Massively Parallel Single-Cell RNA-Seq) is another <strong>plate-based scRNA-seq</strong> method that focuses on <strong>3’ end-tagged sequencing</strong>. Cells are sorted into 384-well plates containing barcoded primers for mRNA capture. Unique molecular identifiers (<strong>UMIs</strong>) and well-specific barcodes are introduced during reverse transcription.</p>
+<p>After cDNA synthesis, all reactions are pooled for linear amplification by IVT (in vitro transcription), followed by library preparation.</p>
+<p><em>Advantages of MARS-seq:</em></p>
+<ul>
+<li>Well-suited for profiling many cells in parallel<br />
+</li>
+<li>Supports UMIs — accurate transcript quantification<br />
+</li>
+<li>Suitable for low-input samples and immune profiling</li>
+</ul>
+<p><em>Limitations of MARS-seq:</em></p>
+<ul>
+<li>3′ bias — cannot resolve isoforms<br />
+</li>
+<li>Requires customized primers and plate setup<br />
+</li>
+<li>Slightly lower sensitivity compared to SMART-seq</li>
+</ul>
 </div>
 <div id="droplet-microfluidics-drop-seq" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> Droplet Microfluidics (DROP-seq)<a href="single-cell-rna-seq-technologies.html#droplet-microfluidics-drop-seq" class="anchor-section" aria-label="Anchor link to header"></a></h2>

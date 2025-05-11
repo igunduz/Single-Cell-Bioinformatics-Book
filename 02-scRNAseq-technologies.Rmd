@@ -22,8 +22,39 @@ some of the single-cell RNA-seq technologies.
 
 ## Plate-Based SMART-seq
 
+SMART-seq is a **plate-based single-cell RNA-seq** method that captures **full-length transcripts** using oligo(dT) priming and template-switching reverse transcriptase. Each cell is sorted (e.g., via FACS) into individual wells of a 96- or 384-well plate.
+
+The cDNA is amplified using PCR, and sequencing libraries are prepared from this amplified cDNA. SMART-seq and its improved version **SMART-seq2** are well-suited for detecting isoforms and lowly expressed genes.
+
+*Advantages of SMART-seq:*
+
+- Full-length transcript coverage — useful for isoform and splicing analysis  
+- High sensitivity, low dropout rate  
+- Compatible with rare/low-throughput samples  
+
+*Limitations of SMART-seq:*
+
+- Lower throughput than droplet-based methods  
+- Higher cost and hands-on time per cell  
+- Not UMI-based — less accurate quantification  
 
 ## MARS-seq
+
+MARS-seq (Massively Parallel Single-Cell RNA-Seq) is another **plate-based scRNA-seq** method that focuses on **3' end-tagged sequencing**. Cells are sorted into 384-well plates containing barcoded primers for mRNA capture. Unique molecular identifiers (**UMIs**) and well-specific barcodes are introduced during reverse transcription.
+
+After cDNA synthesis, all reactions are pooled for linear amplification by IVT (in vitro transcription), followed by library preparation.
+
+*Advantages of MARS-seq:*
+
+- Well-suited for profiling many cells in parallel  
+- Supports UMIs — accurate transcript quantification  
+- Suitable for low-input samples and immune profiling  
+
+*Limitations of MARS-seq:*
+
+- 3′ bias — cannot resolve isoforms  
+- Requires customized primers and plate setup  
+- Slightly lower sensitivity compared to SMART-seq  
 
 
 ## Droplet Microfluidics (DROP-seq)
