@@ -70,7 +70,7 @@ duplicates from transcript copy numbers.
 
 *Limitations of DROP-seq: *
 
-- Most of the droplets are empty and, very few of the droplets contains both a
+-  Most of the droplets are empty and, very few of the droplets contains both a
 cell and microparticle. Thus, it is not an efficient method.
 
 
@@ -94,14 +94,14 @@ barcoded and sequenced simultaneously.
 
 *Advantages of 10X Genomics Chromium:*
 
--  10X Genomics is a commercial platform
--  Data obtained is high-throughput
--  Almost 10,000s reads per cell
--  Fast, inexpensive 
--  3’ transcript sequencing
--  Single-nucleus sequencing possible
-    -  Less bias by cell morphology
-    -  Only captures nuclear RNA
+-   10X Genomics is a commercial platform
+-   Data obtained is high-throughput
+-   Almost 10,000s reads per cell
+-   Fast, inexpensive 
+-   3’ transcript sequencing
+-   Single-nucleus sequencing possible
+    -   Less bias by cell morphology
+    -   Only captures nuclear RNA
 
 ## Nanowell Platforms
 
@@ -115,14 +115,14 @@ compatibility with fragile cell types. These platforms combine physical cell iso
 processing.
 
 *Advantages of Nanowell Platforms*:
-- Gentle on cells — suitable for fragile or rare populations
-- More control over cell-bead pairing than droplet systems
--  Lower equipment complexity vs. droplet microfluidics
+-   Gentle on cells — suitable for fragile or rare populations
+-  More control over cell-bead pairing than droplet systems
+-   Lower equipment complexity vs. droplet microfluidics
 
 *Limitations of Nanowell Platforms*:
-- Lower throughput than 10X or Drop-seq
-- More manual steps — potential for variability
-- Limited capture efficiency compared to high-end droplet systems
+-  Lower throughput than 10X or Drop-seq
+-  More manual steps — potential for variability
+-  Limited capture efficiency compared to high-end droplet systems
 
 ## Sample Indexing (Illumina)
 Sample indexing involves tagging different samples or individual cells with unique barcode sequences 
@@ -134,14 +134,14 @@ This method is widely used in plate-based protocols like SMART-seq2 and is found
 combinatorial indexing strategies.
 
 *Advantages of Sample Indexing*:
-- Cost-efficient multiplexing of samples or conditions
-- Increases throughput without added sequencing lanes
-- Compatible with standard Illumina sequencing workflows
+-  Cost-efficient multiplexing of samples or conditions
+-  Increases throughput without added sequencing lanes
+-  Compatible with standard Illumina sequencing workflows
 
 *Limitations of Sample Indexing*:
-- Barcode swapping or misassignment can affect data accuracy
-- Limited by the number of unique index combinations
-- Cannot handle extremely large numbers of cells without additional combinatorial strategies
+-  Barcode swapping or misassignment can affect data accuracy
+-  Limited by the number of unique index combinations
+-  Cannot handle extremely large numbers of cells without additional combinatorial strategies
 
 ## Single-cell Combinatorial Indexing: sciRNA-seq
 
@@ -155,12 +155,12 @@ is introduced. The contents are then pooled and redistributed, and another set o
 This process repeats across multiple rounds, allowing millions of uniquely labeled single-cell transcriptomes.
 
 *Advantages of sci-RNA-seq*:
-- Ultra-high throughput — millions of cells can be profiled
-- No need for droplet microfluidics or physical single-cell isolation
-- Can be applied to fixed or frozen cells and nuclei
-- Compatible with multi-omic profiling (e.g., sci-ATAC-seq)
+-  Ultra-high throughput — millions of cells can be profiled
+-  No need for droplet microfluidics or physical single-cell isolation
+-  Can be applied to fixed or frozen cells and nuclei
+-  Compatible with multi-omic profiling (e.g., sci-ATAC-seq)
 
 *Limitations of sci-RNA-seq*:
-- Lower transcript capture efficiency than droplet-based methods
-- Complex data processing and barcode decoding
-- May require deep sequencing to resolve sparse expression profiles
+-  Lower transcript capture efficiency than droplet-based methods
+-  Complex data processing and barcode decoding
+-  May require deep sequencing to resolve sparse expression profiles
