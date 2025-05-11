@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Single-Cell RNA-seq Technologies | Single-Cell Bioinformatics: From Technology to Analysis Methodologies</title>
   <meta name="description" content="Chapter 2 Single-Cell RNA-seq Technologies | Single-Cell Bioinformatics: From Technology to Analysis Methodologies" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Single-Cell RNA-seq Technologies | Single-Cell Bioinformatics: From Technology to Analysis Methodologies" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -24,7 +23,7 @@
 <meta name="author" content="İrem B. GÜNDÜZ" />
 
 
-<meta name="date" content="2022-01-01" />
+<meta name="date" content="2025-05-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="why-single-cell-analysis.html"/>
 <link rel="next" href="single-cell-rna-seq-data-processing-and-quality-control.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,16 +49,22 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -137,7 +141,10 @@ div.csl-indent {
 <li class="chapter" data-level="8" data-path="single-cell-atac-seq.html"><a href="single-cell-atac-seq.html"><i class="fa fa-check"></i><b>8</b> Single-Cell ATAC-seq</a></li>
 <li class="chapter" data-level="9" data-path="single-cell-data-integration.html"><a href="single-cell-data-integration.html"><i class="fa fa-check"></i><b>9</b> Single-Cell Data Integration</a></li>
 <li class="chapter" data-level="10" data-path="single-cell-multiomics.html"><a href="single-cell-multiomics.html"><i class="fa fa-check"></i><b>10</b> Single-Cell Multiomics</a></li>
-<li class="chapter" data-level="11" data-path="single-cell-spatial-transcriptomics.html"><a href="single-cell-spatial-transcriptomics.html"><i class="fa fa-check"></i><b>11</b> Single-Cell Spatial Transcriptomics</a></li>
+<li class="chapter" data-level="11" data-path="single-cell-spatial-transcriptomics.html"><a href="single-cell-spatial-transcriptomics.html"><i class="fa fa-check"></i><b>11</b> Single-Cell Spatial Transcriptomics</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="single-cell-spatial-transcriptomics.html"><a href="single-cell-spatial-transcriptomics.html#single-cell-dna-sequencing"><i class="fa fa-check"></i><b>11.1</b> Single-Cell DNA sequencing</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -158,29 +165,29 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="single-cell-rna-seq-technologies" class="section level1" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Single-Cell RNA-seq Technologies</h1>
+<div id="single-cell-rna-seq-technologies" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Single-Cell RNA-seq Technologies<a href="single-cell-rna-seq-technologies.html#single-cell-rna-seq-technologies" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:top"></span>
 <img src="figures/thoughput.JPG" alt="Explosion of scRNA-seq Throughput [-@Svensson2018] " width="150%" />
 <p class="caption">
-FIGURE 2.1: Explosion of scRNA-seq Throughput <span class="citation">(<a href="#ref-Svensson2018" role="doc-biblioref">2018</a>)</span>
+FIGURE 2.1: Explosion of scRNA-seq Throughput <span class="citation">(<a href="#ref-Svensson2018">2018</a>)</span>
 </p>
 </div>
 <p>Technological advances increase the efficiency of single-cell sequencing methods
 while the cost decreases day by day. In this chapter, we will briefly go through
 some of the single-cell RNA-seq technologies.</p>
-<div id="plate-based-smart-seq" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Plate-Based SMART-seq</h2>
+<div id="plate-based-smart-seq" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Plate-Based SMART-seq<a href="single-cell-rna-seq-technologies.html#plate-based-smart-seq" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="mars-seq" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> MARS-seq</h2>
+<div id="mars-seq" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> MARS-seq<a href="single-cell-rna-seq-technologies.html#mars-seq" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="droplet-microfluidics-drop-seq" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Droplet Microfluidics (DROP-seq)</h2>
+<div id="droplet-microfluidics-drop-seq" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Droplet Microfluidics (DROP-seq)<a href="single-cell-rna-seq-technologies.html#droplet-microfluidics-drop-seq" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:dropseq1"></span>
 <img src="figures/DROP-seq.JPG" alt="Extraction and Processing of Single-Cell Transcriptomes by Drop-Seq [-@Macosko2015] " width="140%" />
 <p class="caption">
-FIGURE 2.2: Extraction and Processing of Single-Cell Transcriptomes by Drop-Seq <span class="citation">(<a href="#ref-Macosko2015" role="doc-biblioref">2015</a>)</span>
+FIGURE 2.2: Extraction and Processing of Single-Cell Transcriptomes by Drop-Seq <span class="citation">(<a href="#ref-Macosko2015">2015</a>)</span>
 </p>
 </div>
 <p>DROP-seq enables high throughput profiling of thousands of individual cells in a
@@ -197,7 +204,7 @@ suspended in droplets with microparticle beads which deliver barcoded primers
 within a microfluidic device. When cells within the droplet are lysed, the mRNA
 of these cells is attached to microparticles.A set of beads are generated with
 the reverse transcription of mRNAs into cDNAs. These sets of beads are called
-<code>STAMPs</code>, “single-cell transcriptomes attached to microparticles.” Finally, an
+<code>STAMPs</code>, “single-cell transcriptomes attached to microparticles”. Finally, an
 RNA-seq library with about 10,000 single-cell transcriptomes was constructed by
 barcode <code>STAMPs</code> amplifying.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:dropseq2B"></span>
@@ -220,16 +227,16 @@ duplicates from transcript copy numbers.</p>
 cell and microparticle. Thus, it is not an efficient method.</li>
 </ul>
 </div>
-<div id="x-genomics-chromium" class="section level2" number="2.4">
-<h2><span class="header-section-number">2.4</span> 10X Genomics Chromium</h2>
+<div id="x-genomics-chromium" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> 10X Genomics Chromium<a href="single-cell-rna-seq-technologies.html#x-genomics-chromium" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Genomicsx10"></span>
 <img src="figures/10XGenomics.jpg" alt="10x Genomics Chromium scheme [-@Zheng2017]" width="150%" />
 <p class="caption">
-FIGURE 2.5: 10x Genomics Chromium scheme <span class="citation">(<a href="#ref-Zheng2017" role="doc-biblioref">2017</a>)</span>
+FIGURE 2.5: 10x Genomics Chromium scheme <span class="citation">(<a href="#ref-Zheng2017">2017</a>)</span>
 </p>
 </div>
 <p>The 10X Genomics method is very similar to DROP-seq and, it is first described
-in <span class="citation">(<a href="#ref-Zheng2017" role="doc-biblioref">2017</a>)</span>. First, the barcoded beads are mixed with the cell suspension.
+in <span class="citation">(<a href="#ref-Zheng2017">2017</a>)</span>. First, the barcoded beads are mixed with the cell suspension.
 Then, the mixture is capsulated with the emulsion generated by oil. The
 microfluidic device and the barcoded beads of the 10X Genomics are engineered to
 increase the efficiency of barcoding cells. Therefore almost 90% of the droplets
@@ -252,19 +259,64 @@ barcoded and sequenced simultaneously.</p>
 </ul></li>
 </ul>
 </div>
-<div id="nanowell-platforms" class="section level2" number="2.5">
-<h2><span class="header-section-number">2.5</span> Nanowell Platforms</h2>
+<div id="nanowell-platforms" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Nanowell Platforms<a href="single-cell-rna-seq-technologies.html#nanowell-platforms" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Nanowell-based scRNA-seq platforms isolate single cells into thousands of tiny wells patterned on a
+microchip. Each well contains one cell, and barcoded beads or primers are then added to each well.
+After cell lysis, mRNAs are captured by the barcoded oligos on beads, similar to Drop-seq, followed
+by reverse transcription and cDNA amplification.</p>
+<p>Common nanowell-based methods include Seq-Well and BD Rhapsody, which allow moderate throughput and
+compatibility with fragile cell types. These platforms combine physical cell isolation with scalable
+processing.</p>
+<p><em>Advantages of Nanowell Platforms</em>:
+- Gentle on cells — suitable for fragile or rare populations
+- More control over cell-bead pairing than droplet systems
+- Lower equipment complexity vs. droplet microfluidics</p>
+<p><em>Limitations of Nanowell Platforms</em>:
+- Lower throughput than 10X or Drop-seq
+- More manual steps — potential for variability
+- Limited capture efficiency compared to high-end droplet systems</p>
 </div>
-<div id="sample-indexing-illumina" class="section level2" number="2.6">
-<h2><span class="header-section-number">2.6</span> Sample Indexing (Illumina)</h2>
+<div id="sample-indexing-illumina" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Sample Indexing (Illumina)<a href="single-cell-rna-seq-technologies.html#sample-indexing-illumina" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sample indexing involves tagging different samples or individual cells with unique barcode sequences
+(index tags) during library preparation. These tags are incorporated either via adapter ligation or
+during PCR amplification. After sequencing, reads are demultiplexed based on these indexes, enabling
+multiplexing of multiple samples in a single sequencing run.</p>
+<p>This method is widely used in plate-based protocols like SMART-seq2 and is foundational in many
+combinatorial indexing strategies.</p>
+<p><em>Advantages of Sample Indexing</em>:
+- Cost-efficient multiplexing of samples or conditions
+- Increases throughput without added sequencing lanes
+- Compatible with standard Illumina sequencing workflows</p>
+<p><em>Limitations of Sample Indexing</em>:
+- Barcode swapping or misassignment can affect data accuracy
+- Limited by the number of unique index combinations
+- Cannot handle extremely large numbers of cells without additional combinatorial strategies</p>
 </div>
-<div id="single-cell-combinatorial-indexing-scirna-seq" class="section level2" number="2.7">
-<h2><span class="header-section-number">2.7</span> Single-cell Combinatorial Indexing: sciRNA-seq</h2>
+<div id="single-cell-combinatorial-indexing-scirna-seq" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> Single-cell Combinatorial Indexing: sciRNA-seq<a href="single-cell-rna-seq-technologies.html#single-cell-combinatorial-indexing-scirna-seq" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>sci-RNA-seq (single-cell combinatorial indexing RNA-seq) enables profiling of thousands to millions
+of cells without physically isolating each cell. Instead, it uses combinatorial barcoding in multiple
+rounds of pooling and splitting cells or nuclei, introducing unique barcode combinations in each round
+(e.g., via transposase or reverse transcription primers).</p>
+<p>The method begins with cells or nuclei distributed across multiple wells, where the first set of barcodes
+is introduced. The contents are then pooled and redistributed, and another set of barcodes is applied.
+This process repeats across multiple rounds, allowing millions of uniquely labeled single-cell transcriptomes.</p>
+<p><em>Advantages of sci-RNA-seq</em>:
+- Ultra-high throughput — millions of cells can be profiled
+- No need for droplet microfluidics or physical single-cell isolation
+- Can be applied to fixed or frozen cells and nuclei
+- Compatible with multi-omic profiling (e.g., sci-ATAC-seq)</p>
+<p><em>Limitations of sci-RNA-seq</em>:
+- Lower transcript capture efficiency than droplet-based methods
+- Complex data processing and barcode decoding
+- May require deep sequencing to resolve sparse expression profiles</p>
 
 </div>
 </div>
-<h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-Macosko2015" class="csl-entry">
 Macosko, Evan Z., Anindita Basu, Rahul Satija, James Nemesh, Karthik Shekhar, Melissa Goldman, Itay Tirosh, et al. 2015. <span>“Highly Parallel Genome-Wide Expression Profiling of Individual Cells Using Nanoliter Droplets.”</span> <em>Cell</em> 161 (5): 1202–14. https://doi.org/<a href="https://doi.org/10.1016/j.cell.2015.05.002">https://doi.org/10.1016/j.cell.2015.05.002</a>.
 </div>
@@ -312,7 +364,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/igunduz/the-book-of-a-cell/edit/master/02-scRNAseq-Technologies.Rmd",
+"link": "https://github.com/igunduz/the-book-of-a-cell/edit/master/02-scRNAseq-technologies.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -320,7 +372,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/igunduz/the-book-of-a-cell/blob/master/02-scRNAseq-Technologies.Rmd",
+"link": "https://github.com/igunduz/the-book-of-a-cell/blob/master/02-scRNAseq-technologies.Rmd",
 "text": null
 },
 "download": null,

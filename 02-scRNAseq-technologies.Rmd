@@ -105,10 +105,62 @@ barcoded and sequenced simultaneously.
 
 ## Nanowell Platforms
 
+Nanowell-based scRNA-seq platforms isolate single cells into thousands of tiny wells patterned on a 
+microchip. Each well contains one cell, and barcoded beads or primers are then added to each well. 
+After cell lysis, mRNAs are captured by the barcoded oligos on beads, similar to Drop-seq, followed 
+by reverse transcription and cDNA amplification.
+
+Common nanowell-based methods include Seq-Well and BD Rhapsody, which allow moderate throughput and 
+compatibility with fragile cell types. These platforms combine physical cell isolation with scalable
+processing.
+
+*Advantages of Nanowell Platforms*:
+- Gentle on cells — suitable for fragile or rare populations
+- More control over cell-bead pairing than droplet systems
+-  Lower equipment complexity vs. droplet microfluidics
+
+*Limitations of Nanowell Platforms*:
+- Lower throughput than 10X or Drop-seq
+- More manual steps — potential for variability
+- Limited capture efficiency compared to high-end droplet systems
 
 ## Sample Indexing (Illumina)
+Sample indexing involves tagging different samples or individual cells with unique barcode sequences 
+(index tags) during library preparation. These tags are incorporated either via adapter ligation or 
+during PCR amplification. After sequencing, reads are demultiplexed based on these indexes, enabling
+ multiplexing of multiple samples in a single sequencing run.
 
+This method is widely used in plate-based protocols like SMART-seq2 and is foundational in many 
+combinatorial indexing strategies.
+
+*Advantages of Sample Indexing*:
+- Cost-efficient multiplexing of samples or conditions
+- Increases throughput without added sequencing lanes
+- Compatible with standard Illumina sequencing workflows
+
+*Limitations of Sample Indexing*:
+- Barcode swapping or misassignment can affect data accuracy
+- Limited by the number of unique index combinations
+- Cannot handle extremely large numbers of cells without additional combinatorial strategies
 
 ## Single-cell Combinatorial Indexing: sciRNA-seq
 
+sci-RNA-seq (single-cell combinatorial indexing RNA-seq) enables profiling of thousands to millions 
+of cells without physically isolating each cell. Instead, it uses combinatorial barcoding in multiple
+ rounds of pooling and splitting cells or nuclei, introducing unique barcode combinations in each round
+  (e.g., via transposase or reverse transcription primers).
 
+The method begins with cells or nuclei distributed across multiple wells, where the first set of barcodes
+is introduced. The contents are then pooled and redistributed, and another set of barcodes is applied. 
+This process repeats across multiple rounds, allowing millions of uniquely labeled single-cell transcriptomes.
+
+*Advantages of sci-RNA-seq*:
+- Ultra-high throughput — millions of cells can be profiled
+- No need for droplet microfluidics or physical single-cell isolation
+- Can be applied to fixed or frozen cells and nuclei
+- Compatible with multi-omic profiling (e.g., sci-ATAC-seq)
+
+*Limitations of sci-RNA-seq*:
+- Lower transcript capture efficiency than droplet-based methods
+- Complex data processing and barcode decoding
+- May require deep sequencing to resolve sparse expression profiles

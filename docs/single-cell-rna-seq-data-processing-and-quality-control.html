@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Single-cell RNA-seq Data Processing and Quality Control | Single-Cell Bioinformatics: From Technology to Analysis Methodologies</title>
   <meta name="description" content="Chapter 3 Single-cell RNA-seq Data Processing and Quality Control | Single-Cell Bioinformatics: From Technology to Analysis Methodologies" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Single-cell RNA-seq Data Processing and Quality Control | Single-Cell Bioinformatics: From Technology to Analysis Methodologies" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -24,7 +23,7 @@
 <meta name="author" content="İrem B. GÜNDÜZ" />
 
 
-<meta name="date" content="2022-01-01" />
+<meta name="date" content="2025-05-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="single-cell-rna-seq-technologies.html"/>
 <link rel="next" href="methods-used-in-single-cell.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,16 +49,22 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -137,7 +141,10 @@ div.csl-indent {
 <li class="chapter" data-level="8" data-path="single-cell-atac-seq.html"><a href="single-cell-atac-seq.html"><i class="fa fa-check"></i><b>8</b> Single-Cell ATAC-seq</a></li>
 <li class="chapter" data-level="9" data-path="single-cell-data-integration.html"><a href="single-cell-data-integration.html"><i class="fa fa-check"></i><b>9</b> Single-Cell Data Integration</a></li>
 <li class="chapter" data-level="10" data-path="single-cell-multiomics.html"><a href="single-cell-multiomics.html"><i class="fa fa-check"></i><b>10</b> Single-Cell Multiomics</a></li>
-<li class="chapter" data-level="11" data-path="single-cell-spatial-transcriptomics.html"><a href="single-cell-spatial-transcriptomics.html"><i class="fa fa-check"></i><b>11</b> Single-Cell Spatial Transcriptomics</a></li>
+<li class="chapter" data-level="11" data-path="single-cell-spatial-transcriptomics.html"><a href="single-cell-spatial-transcriptomics.html"><i class="fa fa-check"></i><b>11</b> Single-Cell Spatial Transcriptomics</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="single-cell-spatial-transcriptomics.html"><a href="single-cell-spatial-transcriptomics.html#single-cell-dna-sequencing"><i class="fa fa-check"></i><b>11.1</b> Single-Cell DNA sequencing</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -158,30 +165,30 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="single-cell-rna-seq-data-processing-and-quality-control" class="section level1" number="3">
-<h1><span class="header-section-number">Chapter 3</span> Single-cell RNA-seq Data Processing and Quality Control</h1>
+<div id="single-cell-rna-seq-data-processing-and-quality-control" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Single-cell RNA-seq Data Processing and Quality Control<a href="single-cell-rna-seq-data-processing-and-quality-control.html#single-cell-rna-seq-data-processing-and-quality-control" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Once the raw data is obtained, the first thing to do is to check the quality of
 the reads and process it accordingly. In this chapter, we will go through
 quality control and processing methods for single-cell data.</p>
-<div id="cell-ranger-pipeline" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Cell Ranger Pipeline</h2>
+<div id="cell-ranger-pipeline" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Cell Ranger Pipeline<a href="single-cell-rna-seq-data-processing-and-quality-control.html#cell-ranger-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:cellRanger"></span>
 <img src="figures/Cell-Ranger.JPG" alt="Cell Ranger Pipeline [-@10xGenomics2019]" width="130%" />
 <p class="caption">
-FIGURE 3.1: Cell Ranger Pipeline <span class="citation">(<a href="#ref-10xGenomics2019" role="doc-biblioref">2019</a>)</span>
+FIGURE 3.1: Cell Ranger Pipeline <span class="citation">(<a href="#ref-10xGenomics2019">2019</a>)</span>
 </p>
 </div>
 <p>In 10X Genomics workflow, which is the main workflow that is commonly used
 nowdays, <code>Cell Ranger pipeline</code> is used to process Chromium single-cell data to
 generating feature-barcode matrices, reading alignment, filtering, clustering
-and perform other secondary analysis methodologies.<span class="citation">(<a href="#ref-10xGenomics2019" role="doc-biblioref">2019</a>)</span></p>
+and perform other secondary analysis methodologies.<span class="citation">(<a href="#ref-10xGenomics2019">2019</a>)</span></p>
 <p><code>Cell Ranger</code> identifies each sample, cell and molecule. Identification done by
 using sequencing barcodes (eg. Illumina i7 and i5 indices) for samples,
 cell-specific barcodes for cells and, UMIs for molecules. The typical <code>Cell Ranger</code> results looks like this:</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:cellRanger2"></span>
 <img src="figures/Cell-Ranger2.JPG" alt="Cell Ranger Pipeline Results [-@10xGenomics2019]" width="50%" />
 <p class="caption">
-FIGURE 3.2: Cell Ranger Pipeline Results <span class="citation">(<a href="#ref-10xGenomics2019" role="doc-biblioref">2019</a>)</span>
+FIGURE 3.2: Cell Ranger Pipeline Results <span class="citation">(<a href="#ref-10xGenomics2019">2019</a>)</span>
 </p>
 </div>
 <p>In the previous chapter, we mentioned that some of the droplets may contain no
@@ -197,8 +204,8 @@ successfully to the genome.</p>
 (eg. human data) that may indicate contamination.</p></li>
 <li><p><strong>NOTE :</strong> <code>Cell Ranger</code> prints error, if there is a quality issue.</p></li>
 </ul>
-<div id="fastq-file-format" class="section level3" number="3.1.1">
-<h3><span class="header-section-number">3.1.1</span> FASTQ File Format</h3>
+<div id="fastq-file-format" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> FASTQ File Format<a href="single-cell-rna-seq-data-processing-and-quality-control.html#fastq-file-format" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>High-throughput sequencing reads usually outputs <code>FASTQ</code> files. <code>Cell Ranger</code>
 pipeline produces <code>FASTQ</code> files as well. Let’s take a look at the <code>FASTQ</code> file
 format below.</p>
@@ -213,7 +220,7 @@ starts with <code>@</code>, contains the read identifier, which indicates the po
 the flowcell. The DNA sequence starts from the second line. And the line comes
 before another read identifier contains the per-base sequencing quality score
 (also called PHRED score). The formula of the PHRED score is given below where P
-is the “Probability of base calling error.”</p>
+is the “Probability of base calling error”.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:PHRED"></span>
 <img src="figures/Cell-Ranger3.JPG" alt="The formula of the PHRED score" width="50%" />
 <p class="caption">
@@ -221,11 +228,11 @@ FIGURE 3.4: The formula of the PHRED score
 </p>
 </div>
 </div>
-<div id="sequencing-quality-fastqc-tool" class="section level3" number="3.1.2">
-<h3><span class="header-section-number">3.1.2</span> Sequencing Quality : FASTQC tool</h3>
+<div id="sequencing-quality-fastqc-tool" class="section level3 hasAnchor" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Sequencing Quality : FASTQC tool<a href="single-cell-rna-seq-data-processing-and-quality-control.html#sequencing-quality-fastqc-tool" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Sequence quality can be determined by <code>FASTQC tool</code>. <code>FASTQC tool</code> provides
 simple quality control check on raw sequence data that comes from high
-throughput sequencing pipelines. <span class="citation"><a href="#ref-Anders2010" role="doc-biblioref">Anders</a> (<a href="#ref-Anders2010" role="doc-biblioref">2010</a>)</span></p>
+throughput sequencing pipelines. <span class="citation">Anders (<a href="#ref-Anders2010">2010</a>)</span></p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:FASTQC"></span>
 <img src="figures/FASTQC.JPG" alt="FASTQC Results" width="200%" />
 <p class="caption">
@@ -241,8 +248,8 @@ FIGURE 3.5: FASTQC Results
 <li>Sequence contamination (adapters, etc.)</li>
 </ul>
 </div>
-<div id="read-trimming" class="section level3" number="3.1.3">
-<h3><span class="header-section-number">3.1.3</span> Read trimming</h3>
+<div id="read-trimming" class="section level3 hasAnchor" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> Read trimming<a href="single-cell-rna-seq-data-processing-and-quality-control.html#read-trimming" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Sequencing data analysis pipelines modify the read sequences produced by a
 sequencer. There may be sequence biases due to structural oligonucleotides
 (adapters, etc.) and low-quality sequences. Trimming at reading ends is done as
@@ -263,8 +270,8 @@ FIGURE 3.6: High-throughput sequencing pipeline scheme
 </ul>
 </div>
 </div>
-<div id="demultiplexing" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Demultiplexing</h2>
+<div id="demultiplexing" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Demultiplexing<a href="single-cell-rna-seq-data-processing-and-quality-control.html#demultiplexing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Demultiplexing"></span>
 <img src="figures/Demultiplexing1.JPG" alt="Data processing pipeline workflow." width="150%" />
 <p class="caption">
@@ -276,7 +283,7 @@ errors via PCR can be introduced when preparing the library. When working with
 working with single-cell RNA sequencing data the initial cDNA libraries undergo
 PCR amplification multiple times. Thus, PCR errors are often introduced when
 preparing single-cell RNA sequencing library. Demultiplex is a simple sequencing
-error correction algorithm used to prevent this kind of errors. <span class="citation"><a href="#ref-Zhang2018" role="doc-biblioref">Zhang et al.</a> (<a href="#ref-Zhang2018" role="doc-biblioref">2018</a>)</span></p>
+error correction algorithm used to prevent this kind of errors. <span class="citation">Zhang et al. (<a href="#ref-Zhang2018">2018</a>)</span></p>
 <p>Demultiplexing indicates identification of cell barcodes, assigning cell-barcode
 to the associated reads and, filtration of cell-barcodes. If the data contains
 UMIs, UMI codes are mapped to the read name of the gene-body containing read.
@@ -289,42 +296,42 @@ and, Smart-seq2 are already be demultiplexed. If the data was not demultiplexed,
 you need to apply it yourself depending on the protocol used to produce raw
 data.</p>
 </div>
-<div id="star-ultrafast-universal-rna-seq-aligner" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> STAR: Ultrafast Universal RNA-seq Aligner</h2>
+<div id="star-ultrafast-universal-rna-seq-aligner" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> STAR: Ultrafast Universal RNA-seq Aligner<a href="single-cell-rna-seq-data-processing-and-quality-control.html#star-ultrafast-universal-rna-seq-aligner" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>After trimming and, prof the data has good quality, the data needs to be mapped
 to the corresponding reference genome. This mapping process is called alignment
 and, it is necessary if we’re interested in gene expression analysis (eg.
 differential gene expression analysis, quantifying etc.) <strong>Kallisto</strong> and
-<strong>STAR</strong> are the most popular alignement tools. <span class="citation"><a href="#ref-Dobin2013" role="doc-biblioref">Dobin et al.</a> (<a href="#ref-Dobin2013" role="doc-biblioref">2013</a>)</span></p>
+<strong>STAR</strong> are the most popular alignement tools. <span class="citation">Dobin et al. (<a href="#ref-Dobin2013">2013</a>)</span></p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:STAR"></span>
 <img src="figures/STAR.png" alt="STAR workflow.[-@Piper2017]" width="250%" />
 <p class="caption">
-FIGURE 3.8: STAR workflow.<span class="citation">(<a href="#ref-Piper2017" role="doc-biblioref">2017</a>)</span>
+FIGURE 3.8: STAR workflow.<span class="citation">(<a href="#ref-Piper2017">2017</a>)</span>
 </p>
 </div>
 <p>In summary, <strong>STAR</strong> searchs for the longest sequence in the data that is also
 present in the reference genome using an uncompressed suffix array (SA). This
 process is called seed searching. The longest matching sequences are called “the
-Maximal Mappable Prefixes (MMPs).” The MMP side and the unread side are named as
+Maximal Mappable Prefixes (MMPs)”. The MMP side and the unread side are named as
 different seeds (eg <em>seed1</em>,<em>seed2</em>). After finding MMP, <strong>STAR</strong> searchs for
 the next the longest sequence. If an exact matching sequence for each part of
 the read is not found,the previous MMPs will be extended. And, if extending the
 previous MMPs oes not give a good alignment, then the poor quality or adapter
 sequence (or other contaminating sequence) will be soft clipped. These process
 is repeated for each for unmapped part of the read in forward and reverse
-directions. <span class="citation"><a href="#ref-Dobin2013" role="doc-biblioref">Dobin et al.</a> (<a href="#ref-Dobin2013" role="doc-biblioref">2013</a>)</span> <strong>STAR</strong> detects splicing events in this way, because of
+directions. <span class="citation">Dobin et al. (<a href="#ref-Dobin2013">2013</a>)</span> <strong>STAR</strong> detects splicing events in this way, because of
 that,it also called splice aware aligner.</p>
 <p>Then seeds are clustered by proximity to ‘anchor’ seeds (or uniquely mapping
 seeds) and, seeds are stitched together based on alignment score using dynamic
 programming. The scoring done based on matches, mismatches, insertions,
-deletions and splice junction gaps. <span class="citation"><a href="#ref-Piper2017" role="doc-biblioref">Mistry, M. Freeman, B. Piper</a> (<a href="#ref-Piper2017" role="doc-biblioref">2017</a>)</span></p>
+deletions and splice junction gaps. <span class="citation">Mistry, M. Freeman, B. Piper (<a href="#ref-Piper2017">2017</a>)</span></p>
 </div>
-<div id="transcript-quantification-kallisto" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> Transcript Quantification: KALLISTO</h2>
+<div id="transcript-quantification-kallisto" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Transcript Quantification: KALLISTO<a href="single-cell-rna-seq-data-processing-and-quality-control.html#transcript-quantification-kallisto" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Kallisto"></span>
 <img src="figures/Kallipso.JPG" alt="Kallisto workflow.[-@Bray2016]" width="80%" />
 <p class="caption">
-FIGURE 3.9: Kallisto workflow.<span class="citation">(<a href="#ref-Bray2016" role="doc-biblioref">2016</a>)</span>
+FIGURE 3.9: Kallisto workflow.<span class="citation">(<a href="#ref-Bray2016">2016</a>)</span>
 </p>
 </div>
 <p>While <strong>STAR</strong> is a read-alinger, <strong>Kallisto</strong> is a pseudo-aligner. That means,
@@ -334,7 +341,7 @@ for each base. Instead, it uses a <em>Transcriptome de Bruijn Graph (T-DBG)</em>
 k-mer is a nucleotide sequence that length k derived from a read. Each
 transcript act as a path through the graph and, transcriptome reference
 represented as consecutive k-mers. Kallisto maps reads to splice isoforms rather
-than genes. <span class="citation"><a href="#ref-Bray2016" role="doc-biblioref">Bray et al.</a> (<a href="#ref-Bray2016" role="doc-biblioref">2016</a>)</span></p>
+than genes. <span class="citation">Bray et al. (<a href="#ref-Bray2016">2016</a>)</span></p>
 <p><em>EM-algorithm</em> is used to estimate transcript abundance and optimize
 compatibility (likelihood). Intersection of vertex compatibility classes
 indicates compatible transcripts.</p>
@@ -351,8 +358,8 @@ read-aligners. Pseudo-aligners can cope better with sequencing errors. For
 example, if k is sufficiently large, the error k-mers may not be part of the
 transcriptome and can be ignored.</p>
 </div>
-<div id="the-single-cell-data" class="section level2" number="3.5">
-<h2><span class="header-section-number">3.5</span> The Single-Cell Data</h2>
+<div id="the-single-cell-data" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> The Single-Cell Data<a href="single-cell-rna-seq-data-processing-and-quality-control.html#the-single-cell-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:scdata"></span>
 <img src="figures/scdata.png" alt="Representation of the single-cell count data " width="100%" />
 <p class="caption">
@@ -365,7 +372,7 @@ methods are necessary.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:scdata2"></span>
 <img src="figures/scdata2.gif" alt="Representation of the sparse data [-@Eding2009]" width="80%" />
 <p class="caption">
-FIGURE 3.12: Representation of the sparse data <span class="citation">(<a href="#ref-Eding2009" role="doc-biblioref">2009</a>)</span>
+FIGURE 3.12: Representation of the sparse data <span class="citation">(<a href="#ref-Eding2009">2009</a>)</span>
 </p>
 </div>
 <p>If the matrix has zero values for most elements, it can be considered as sparse
@@ -374,7 +381,7 @@ elements. If the <em>NNZ</em> ratio is above 0.5 data can be considered as spars
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:scdata3"></span>
 <img src="figures/scdata.gif" alt="Representation of the Coordinate Matrix (COO) [-@Eding2009]" width="80%" />
 <p class="caption">
-FIGURE 3.13: Representation of the Coordinate Matrix (COO) <span class="citation">(<a href="#ref-Eding2009" role="doc-biblioref">2009</a>)</span>
+FIGURE 3.13: Representation of the Coordinate Matrix (COO) <span class="citation">(<a href="#ref-Eding2009">2009</a>)</span>
 </p>
 </div>
 <p>To save memory, the sparse data can be stored in a <em>coordinate matrix (COO)</em>.
@@ -383,11 +390,11 @@ Only the non-zero elements stored as vectors and their respective indices in a
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:scdata4"></span>
 <img src="figures/scdata3.gif" alt="Compressed Sparse Row [-@Eding2009]" width="80%" />
 <p class="caption">
-FIGURE 3.14: Compressed Sparse Row <span class="citation">(<a href="#ref-Eding2009" role="doc-biblioref">2009</a>)</span>
+FIGURE 3.14: Compressed Sparse Row <span class="citation">(<a href="#ref-Eding2009">2009</a>)</span>
 </p>
 </div>
 <p>The <em>Compressed Sparse Row</em> (<em>CSR</em>) format is designed for more efficient
-indexing and computation and, it can be considered as “read-only.” The <em>data
+indexing and computation and, it can be considered as “read-only”. The <em>data
 (x)</em> within the <em>CSR</em> consist of non-zero elements, <em>index (i)</em>.</p>
 <ul>
 <li>Length = length of x</li>
@@ -396,7 +403,7 @@ indexing and computation and, it can be considered as “read-only.” The <em>d
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:scdata5"></span>
 <img src="figures/scdata4.gif" alt="Compressed Sparse Column [-@Eding2009]" width="80%" />
 <p class="caption">
-FIGURE 3.15: Compressed Sparse Column <span class="citation">(<a href="#ref-Eding2009" role="doc-biblioref">2009</a>)</span>
+FIGURE 3.15: Compressed Sparse Column <span class="citation">(<a href="#ref-Eding2009">2009</a>)</span>
 </p>
 </div>
 <p><em>Compressed Sparse Column</em> (<em>CSC</em>) works exactly the same as <em>CSR</em>. But,
@@ -408,8 +415,8 @@ instead of row based index,<em>CSC</em> has column based index pointers.</p>
 <li>Differences indicate number of non-zero elements per row</li>
 </ul>
 </div>
-<div id="data-normalization" class="section level2" number="3.6">
-<h2><span class="header-section-number">3.6</span> Data normalization</h2>
+<div id="data-normalization" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Data normalization<a href="single-cell-rna-seq-data-processing-and-quality-control.html#data-normalization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:normalization"></span>
 <img src="figures/datanorm.PNG" alt="Single-cell sequencing counts" width="80%" />
 <p class="caption">
@@ -418,12 +425,12 @@ FIGURE 3.16: Single-cell sequencing counts
 </div>
 <p>Single-cell sequencing data needs to be normalized to make quantifications
 comparable across cells and, mitigate cell-specific coverage biases. There are
-several methods present for normalizing the single-cell sequencing data. <span class="citation"><a href="#ref-Hafemeister2019" role="doc-biblioref">Hafemeister and Satija</a> (<a href="#ref-Hafemeister2019" role="doc-biblioref">2019</a>)</span></p>
+several methods present for normalizing the single-cell sequencing data. <span class="citation">Hafemeister and Satija (<a href="#ref-Hafemeister2019">2019</a>)</span></p>
 <ol style="list-style-type: decimal">
 <li><em>Within-sample normalization.</em></li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:wsnormalization"></span>
-<img src="figures/datanorm2.png" alt="Within-sample normalization formulas." width="50%" />
+<img src="figures/datanorm2.PNG" alt="Within-sample normalization formulas." width="50%" />
 <p class="caption">
 FIGURE 3.17: Within-sample normalization formulas.
 </p>
@@ -464,8 +471,8 @@ FIGURE 3.19: Scaling: z-score formula.
 </ul></li>
 </ul>
 </div>
-<div id="dealing-with-batch-effects" class="section level2" number="3.7">
-<h2><span class="header-section-number">3.7</span> Dealing with Batch Effects</h2>
+<div id="dealing-with-batch-effects" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> Dealing with Batch Effects<a href="single-cell-rna-seq-data-processing-and-quality-control.html#dealing-with-batch-effects" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Batch"></span>
 <img src="figures/batcheffect.png" alt="Representation of batch effect and, the ComBat formula." width="60%" />
 <p class="caption">
@@ -492,26 +499,62 @@ designed in a non-confounded way.</p>
 </ul></li>
 </ul>
 </div>
-<div id="data-cleanup-filtering" class="section level2" number="3.8">
-<h2><span class="header-section-number">3.8</span> Data cleanup (filtering)</h2>
+<div id="data-cleanup-filtering" class="section level2 hasAnchor" number="3.8">
+<h2><span class="header-section-number">3.8</span> Data cleanup (filtering)<a href="single-cell-rna-seq-data-processing-and-quality-control.html#data-cleanup-filtering" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Along with the sparsity, single-cell sequencing data may contain uninformative
+data. This kind of uninformative data may be due to several reasons such as
+dying cells, cells with broken membranes and, doublets. These conditions are
+examples of outlier barcodes. We need to filter the data to remove the
+uninformative data. Filtration is done by removing the cells using metric
+thresholding ,removing genes and, removing droplets.</p>
+<p><img src="figures/filtering.PNG" width="60%" style="display: block; margin: auto;" /></p>
+<p>Remove cells using metric thresholding:
+* Number of reads per cell
+* Number of genes detected per cell
+* Mitochondrial read fraction <em>(indicates the death and dying cells)</em></p>
+<p>Remove genes
+* Genes expressed in only few cells
+* Not all genes might be relevant in all contexts <em>(e.g.mitochondrial and ribosomal genes)</em></p>
 </div>
-<div id="empty-droplets" class="section level2" number="3.9">
-<h2><span class="header-section-number">3.9</span> Empty Droplets</h2>
+<div id="empty-droplets" class="section level2 hasAnchor" number="3.9">
+<h2><span class="header-section-number">3.9</span> Empty Droplets<a href="single-cell-rna-seq-data-processing-and-quality-control.html#empty-droplets" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>One barcode should correspond to one cell, but barcodes may not tag any cell
+<em>(empty droplet)</em> or, barcodes may correspond to multiple cells <em>(multiplets,
+doublets)</em>. when removing droplets,the goal is to remove barcodes not
+corresponding to actual cells and, retain barcodes corresponding to actual cells
+with low RNA content. <span class="citation">Lun et al. (<a href="#ref-Lun2019">2019</a>)</span></p>
+<p>The simplest way to remove droplets is setting a threshold on UMI counts.</p>
+<ul>
+<li>99th percentile (minus 10%) of expected number of cells</li>
+<li>Filter based on elbow (knee) plot</li>
+</ul>
+<p><code>EmptyDrops</code> ambient testing is another option.</p>
+<ul>
+<li>Fit “ambient distribution” using barcodes below a threshold T</li>
+<li>Statistically test barcodes whether they significantly deviate from the
+ambient distribution
+<ul>
+<li>Good-Turing Smoothing algorithm to test deviation from multinomial (Dirichlet)
+distribution over all genes</li>
+</ul></li>
+</ul>
+<p>Or, Combine ambient testing with thresholding: add high-UMI count barcodes as
+true cells.</p>
 </div>
-<div id="doublet-detection-and-removal-demuxlet" class="section level2" number="3.10">
-<h2><span class="header-section-number">3.10</span> Doublet detection and removal: <em>demuxlet</em></h2>
+<div id="doublet-detection-and-removal-demuxlet" class="section level2 hasAnchor" number="3.10">
+<h2><span class="header-section-number">3.10</span> Doublet detection and removal: <em>demuxlet</em><a href="single-cell-rna-seq-data-processing-and-quality-control.html#doublet-detection-and-removal-demuxlet" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="doublet-detection-and-removal-doubletfinder" class="section level2" number="3.11">
-<h2><span class="header-section-number">3.11</span> Doublet detection and removal: <em>DoubletFinder</em></h2>
+<div id="doublet-detection-and-removal-doubletfinder" class="section level2 hasAnchor" number="3.11">
+<h2><span class="header-section-number">3.11</span> Doublet detection and removal: <em>DoubletFinder</em><a href="single-cell-rna-seq-data-processing-and-quality-control.html#doublet-detection-and-removal-doubletfinder" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="doublet-detection-and-removal-scrublet" class="section level2" number="3.12">
-<h2><span class="header-section-number">3.12</span> Doublet detection and removal: <em>Scrublet</em></h2>
+<div id="doublet-detection-and-removal-scrublet" class="section level2 hasAnchor" number="3.12">
+<h2><span class="header-section-number">3.12</span> Doublet detection and removal: <em>Scrublet</em><a href="single-cell-rna-seq-data-processing-and-quality-control.html#doublet-detection-and-removal-scrublet" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="issues-of-the-single-cell-data" class="section level2" number="3.13">
-<h2><span class="header-section-number">3.13</span> Issues of the Single-Cell Data</h2>
+<div id="issues-of-the-single-cell-data" class="section level2 hasAnchor" number="3.13">
+<h2><span class="header-section-number">3.13</span> Issues of the Single-Cell Data<a href="single-cell-rna-seq-data-processing-and-quality-control.html#issues-of-the-single-cell-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="data-imputation-data-smoothing" class="section level2" number="3.14">
-<h2><span class="header-section-number">3.14</span> Data imputation / Data Smoothing</h2>
+<div id="data-imputation-data-smoothing" class="section level2 hasAnchor" number="3.14">
+<h2><span class="header-section-number">3.14</span> Data imputation / Data Smoothing<a href="single-cell-rna-seq-data-processing-and-quality-control.html#data-imputation-data-smoothing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We already mentioned that single-cell data is noisy due to missing data and
 stochastic transcription. Missing values can be imputed via several methods,
 this process called <em>data smoothing</em> (eg <em>data imputation</em>).</p>
@@ -524,7 +567,7 @@ FIGURE 3.21: Representation of Data imputation / Data Smoothing in single-cell R
 <p>Imputation may be beneficial however, we must be careful with over smoothing.
 Over smoothing indicates false positives in differential analysis or artificial
 clusters. To detect over smoothing, downstream analysis on smoothed data needs
-to be carefully considered. <span class="citation"><a href="#ref-Andrews2018" role="doc-biblioref">Andrews and Hemberg</a> (<a href="#ref-Andrews2018" role="doc-biblioref">2018</a>)</span></p>
+to be carefully considered. <span class="citation">Andrews and Hemberg (<a href="#ref-Andrews2018">2018</a>)</span></p>
 <p>Here are the most popular imputation tools/softwares:</p>
 <ul>
 <li><strong>scImpute</strong>: log-normal model detects dropout events and imputes using
@@ -537,12 +580,12 @@ modeling</li>
 <li><strong>netSmooth</strong></li>
 </ul>
 </div>
-<div id="magic-markov-affinity-based-graph-imputation-of-cells" class="section level2" number="3.15">
-<h2><span class="header-section-number">3.15</span> MAGIC (Markov Affinity-based Graph Imputation of Cells)</h2>
+<div id="magic-markov-affinity-based-graph-imputation-of-cells" class="section level2 hasAnchor" number="3.15">
+<h2><span class="header-section-number">3.15</span> MAGIC (Markov Affinity-based Graph Imputation of Cells)<a href="single-cell-rna-seq-data-processing-and-quality-control.html#magic-markov-affinity-based-graph-imputation-of-cells" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:MAGIC"></span>
 <img src="figures/MAGIC.png" alt="Imputation with MAGIC [-@VanDijk2018]" width="80%" />
 <p class="caption">
-FIGURE 3.22: Imputation with MAGIC <span class="citation">(<a href="#ref-VanDijk2018" role="doc-biblioref">2018</a>)</span>
+FIGURE 3.22: Imputation with MAGIC <span class="citation">(<a href="#ref-VanDijk2018">2018</a>)</span>
 </p>
 </div>
 <p><strong>MAGIC</strong> is one of the sophisticated imputation/smoothing methods. <strong>MAGIC</strong>
@@ -552,24 +595,24 @@ gene scores based on this signal. The overall <strong>MAGIC</strong> workflow is
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:MAGIC2"></span>
 <img src="figures/MAGIC2.PNG" alt="The MAGIC workflow [-@VanDijk2018]" width="40%" />
 <p class="caption">
-FIGURE 3.23: The MAGIC workflow <span class="citation">(<a href="#ref-VanDijk2018" role="doc-biblioref">2018</a>)</span>
+FIGURE 3.23: The MAGIC workflow <span class="citation">(<a href="#ref-VanDijk2018">2018</a>)</span>
 </p>
 </div>
 <p><strong>MAGIC</strong> calculates the distance between neighbors and, the affinity of the
 neighbors. Then, learns from this manifold data with the implemented manifold
 learning algorithm. As a result, <strong>MAGIC</strong> construct a graph and, use it to
-impute the features. <span class="citation"><a href="#ref-VanDijk2018" role="doc-biblioref">Dijk et al.</a> (<a href="#ref-VanDijk2018" role="doc-biblioref">2018</a>)</span></p>
+impute the features. <span class="citation">Dijk et al. (<a href="#ref-VanDijk2018">2018</a>)</span></p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:MAGIC3"></span>
 <img src="figures/MAGIC3.png" alt="The formulas used in MAGIC imputation [-@VanDijk2018]" width="65%" />
 <p class="caption">
-FIGURE 3.24: The formulas used in MAGIC imputation <span class="citation">(<a href="#ref-VanDijk2018" role="doc-biblioref">2018</a>)</span>
+FIGURE 3.24: The formulas used in MAGIC imputation <span class="citation">(<a href="#ref-VanDijk2018">2018</a>)</span>
 </p>
 </div>
 
 </div>
 </div>
-<h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-10xGenomics2019" class="csl-entry">
 10xGenomics. 2019. <span>“<span class="nocase">Single-Cell RNA-Seq: An Introductory Overview and Tools for Getting Started. Retrieved 06-08-2019. https://community.10xgenomics.com/t5/10x-Blog/Single-Cell-RNA-Seq-An-Introductory-Overview-and-Tools-for/ba-p/547</span>.”</span> <em>10xGenomics</em>, 5–9. <a href="https://www.10xgenomics.com/blog/single-cell-rna-seq-an-introductory-overview-and-tools-for-getting-started">https://www.10xgenomics.com/blog/single-cell-rna-seq-an-introductory-overview-and-tools-for-getting-started</a>.
 </div>
@@ -593,6 +636,9 @@ Eding, Matt. 2009. <span>“<span>Sparse Matrices</span>.”</span> In, 419–44
 </div>
 <div id="ref-Hafemeister2019" class="csl-entry">
 Hafemeister, Christoph, and Rahul Satija. 2019. <span>“<span class="nocase">Normalization and variance stabilization of single-cell RNA-seq data using regularized negative binomial regression</span>.”</span> <em>Genome Biology</em> 20 (1): 1–15. <a href="https://doi.org/10.1186/S13059-019-1874-1/FIGURES/6">https://doi.org/10.1186/S13059-019-1874-1/FIGURES/6</a>.
+</div>
+<div id="ref-Lun2019" class="csl-entry">
+Lun, Aaron, Samantha Riesenfeld, Tallulah Andrews, The Dao, Tomas Gomes, and John Marioni. 2019. <span>“EmptyDrops: Distinguishing Cells from Empty Droplets in Droplet-Based Single-Cell RNA Sequencing Data.”</span> <em>Genome Biology</em> 20 (March): 63. <a href="https://doi.org/10.1186/s13059-019-1662-y">https://doi.org/10.1186/s13059-019-1662-y</a>.
 </div>
 <div id="ref-Piper2017" class="csl-entry">
 Mistry, M. Freeman, B. Piper, M. 2017. <span>“<span class="nocase">Alignment with STAR | Introduction to RNA-Seq using high-performance computing</span>.”</span> <a href="https://hbctraining.github.io/Intro-to-rnaseq-hpc-O2/lessons/03_alignment.html">https://hbctraining.github.io/Intro-to-rnaseq-hpc-O2/lessons/03_alignment.html</a>.
