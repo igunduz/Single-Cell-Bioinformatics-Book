@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo      = TRUE,
                       fig.align = 'center')
 ```
 
-## Integration of Single-Cell Omics Data
+##Integration of Single-Cell Omics Data
 
 ```{r echo=FALSE, integration1, out.width='140%', fig.show='hold', fig.cap="Challenges in multi-modal integration"}
 knitr::include_graphics("figures/integration_challenges.png")

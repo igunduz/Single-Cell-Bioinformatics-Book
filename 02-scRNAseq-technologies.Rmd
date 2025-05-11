@@ -147,7 +147,7 @@ processing.
 
 *Advantages of Nanowell Platforms*:
 -   Gentle on cells — suitable for fragile or rare populations
--  More control over cell-bead pairing than droplet systems
+-   More control over cell-bead pairing than droplet systems
 -   Lower equipment complexity vs. droplet microfluidics
 
 *Limitations of Nanowell Platforms*:
@@ -165,11 +165,13 @@ This method is widely used in plate-based protocols like SMART-seq2 and is found
 combinatorial indexing strategies.
 
 *Advantages of Sample Indexing*:
+
 -  Cost-efficient multiplexing of samples or conditions
 -  Increases throughput without added sequencing lanes
 -  Compatible with standard Illumina sequencing workflows
 
-*Limitations of Sample Indexing*:
+*Limitations of Sample Indexing:*
+
 -  Barcode swapping or misassignment can affect data accuracy
 -  Limited by the number of unique index combinations
 -  Cannot handle extremely large numbers of cells without additional combinatorial strategies

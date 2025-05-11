@@ -76,7 +76,6 @@ single-cell-atac-seq
 single-cell-data-integration
 single-cell-multiomics
 single-cell-spatial-transcriptomics
-integration-of-single-cell-omics-data
 horizontal-integration
 vertical-integration
 mofa-mofa
