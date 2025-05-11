@@ -74,8 +74,6 @@ differential-regulation-and-pathway-analysis-in-single-cell
 single-cell-epigenomics
 single-cell-atac-seq
 single-cell-data-integration
-single-cell-multiomics
-single-cell-spatial-transcriptomics
 horizontal-integration
 vertical-integration
 mofa-mofa
@@ -83,4 +81,6 @@ liger-linked-inference-of-genomic-experimental-relationships
 weighted-nearest-neighbors-wnn
 bridge-integration
 deep-learning-approaches-multivi
+single-cell-multiomics
+single-cell-spatial-transcriptomics
 single-cell-dna-sequencing
