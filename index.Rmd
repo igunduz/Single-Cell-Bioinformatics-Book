@@ -9,3 +9,13 @@ link-citations: true
 
 # Preferance {-}
 
+This book is a curated and structured compilation of notes taken during the Single-Cell Bioinformatics course offered at Saarland University. It is intended as a learning resource for students, researchers, and practitioners interested in the principles and applications of single-cell analysis.
+
+The content has been adapted from:
+	•	Lecture slides and materials prepared by *Prof. Fabian Müller*,
+	•	In-class discussions and explanatory sessions,
+	•	Reference articles and selected literature in the field.
+
+The structure and additional commentary were organized by the author as part of a student-led effort to consolidate and clarify the material. While every effort has been made to ensure accuracy and pedagogical clarity, this is not an official course textbook and should be viewed as a personal learning aid.
+
+For formal or research use, readers are encouraged to consult the original papers and lecture materials cited throughout the book.
