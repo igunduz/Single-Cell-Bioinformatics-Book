@@ -1,6 +1,6 @@
 \mainmatter
 
-```{r sTranscriptomics, include=FALSE}
+```{r sintegrate, include=FALSE}
 knitr::opts_chunk$set(echo      = TRUE,
                       message   = FALSE, 
                       error     = FALSE,
@@ -97,3 +97,4 @@ knitr::include_graphics("figures/BridgeIntegration.png")
 
 ```{r echo=FALSE, multivi, out.width='120%', fig.show='hold', fig.cap="MultiVI for integrative latent representation [-@Ashuach2021]"}
 knitr::include_graphics("figures/MultiVI.png")
+```

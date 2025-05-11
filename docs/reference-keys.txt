@@ -29,6 +29,13 @@ fig:Smoothing
 fig:MAGIC
 fig:MAGIC2
 fig:MAGIC3
+fig:integration1
+fig:cca
+fig:mofa
+fig:liger
+fig:wnn
+fig:bridge
+fig:multivi
 why-single-cell-analysis
 single-cell-rna-seq-technologies
 plate-based-smart-seq
@@ -65,4 +72,12 @@ single-cell-atac-seq
 single-cell-data-integration
 single-cell-multiomics
 single-cell-spatial-transcriptomics
+integration-of-single-cell-omics-data
+horizontal-integration
+vertical-integration
+mofa-mofa
+liger-linked-inference-of-genomic-experimental-relationships
+weighted-nearest-neighbors-wnn
+bridge-integration
+deep-learning-approaches-multivi
 single-cell-dna-sequencing
