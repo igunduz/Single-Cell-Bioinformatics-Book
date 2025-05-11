@@ -553,15 +553,80 @@ true cells.</p>
 </div>
 <div id="doublet-detection-and-removal-demuxlet" class="section level2 hasAnchor" number="3.10">
 <h2><span class="header-section-number">3.10</span> Doublet detection and removal: <em>demuxlet</em><a href="single-cell-rna-seq-data-processing-and-quality-control.html#doublet-detection-and-removal-demuxlet" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:demuxlet"></span>
+<img src="figures/demuxlet.png" alt="Doublet detection with demuxlet [-@Kang2018]" width="80%" />
+<p class="caption">
+FIGURE 3.21: Doublet detection with demuxlet <span class="citation">(<a href="#ref-Kang2018">2018</a>)</span>
+</p>
+</div>
+<p><strong>demuxlet</strong> is a method that leverages genotype information to detect doublets in genetically diverse cell populations. For each droplet, it uses the likelihood of genotyping calls to infer whether the droplet is a singlet or a doublet. The process involves:</p>
+<ul>
+<li>Maximum likelihood estimation of genotype matches</li>
+<li>Modeling doublets as a mixture of two genotype profiles</li>
+<li>Computing posterior probability for doublet classification</li>
+</ul>
+<p>This approach is powerful when donor genotypes are known and enables reliable assignment of cells to individuals in multiplexed samples.</p>
+<hr />
 </div>
 <div id="doublet-detection-and-removal-doubletfinder" class="section level2 hasAnchor" number="3.11">
 <h2><span class="header-section-number">3.11</span> Doublet detection and removal: <em>DoubletFinder</em><a href="single-cell-rna-seq-data-processing-and-quality-control.html#doublet-detection-and-removal-doubletfinder" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:doubletfinder"></span>
+<img src="figures/doubletfinder.png" alt="Doublet detection with DoubletFinder [-@McGinnis2019]" width="80%" />
+<p class="caption">
+FIGURE 3.22: Doublet detection with DoubletFinder <span class="citation">(<a href="#ref-McGinnis2019">2019</a>)</span>
+</p>
+</div>
+<p><strong>DoubletFinder</strong> detects doublets by simulating artificial doublets and using a k-nearest-neighbor (KNN) classifier in PCA space. Steps include:</p>
+<ul>
+<li>Normalizing data and selecting variable genes</li>
+<li>Simulating doublets by merging transcriptomes</li>
+<li>Embedding into PCA space</li>
+<li>Computing proportion of artificial nearest neighbors (<strong>pANN</strong>)</li>
+<li>Classifying top cells with highest pANN as doublets</li>
+</ul>
+<p>Parameter tuning (e.g. expected doublet rate) improves sensitivity.</p>
+<hr />
 </div>
 <div id="doublet-detection-and-removal-scrublet" class="section level2 hasAnchor" number="3.12">
 <h2><span class="header-section-number">3.12</span> Doublet detection and removal: <em>Scrublet</em><a href="single-cell-rna-seq-data-processing-and-quality-control.html#doublet-detection-and-removal-scrublet" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:scrublet"></span>
+<img src="figures/scrublet.png" alt="Doublet detection with Scrublet [-@Wolock2019]" width="80%" />
+<p class="caption">
+FIGURE 3.23: Doublet detection with Scrublet <span class="citation">(<a href="#ref-Wolock2019">2019</a>)</span>
+</p>
+</div>
+<p><strong>Scrublet</strong> is a Python-based tool that uses simulation and distance-based metrics:</p>
+<ul>
+<li>Simulates doublets by summing transcriptomes</li>
+<li>Embeds cells into PCA space</li>
+<li>Builds KNN graph and calculates doublet score</li>
+<li>Thresholds doublet score to identify doublets</li>
+</ul>
+<p>Unlike demuxlet, Scrublet does not require genotype data and can be used with standard single-cell datasets.</p>
+<hr />
 </div>
 <div id="issues-of-the-single-cell-data" class="section level2 hasAnchor" number="3.13">
 <h2><span class="header-section-number">3.13</span> Issues of the Single-Cell Data<a href="single-cell-rna-seq-data-processing-and-quality-control.html#issues-of-the-single-cell-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:scissues"></span>
+<img src="figures/sc_issues.png" alt="Challenges in single-cell RNA-seq data [-@Kharchenko2014]" width="80%" />
+<p class="caption">
+FIGURE 3.24: Challenges in single-cell RNA-seq data <span class="citation">(<a href="#ref-Kharchenko2014">2014</a>)</span>
+</p>
+</div>
+<p>Single-cell data presents challenges:</p>
+<ul>
+<li>High sparsity due to dropouts</li>
+<li>Low coverage for some genes</li>
+<li>Technical noise and overdispersion</li>
+<li>Biological variability</li>
+</ul>
+<p>Common strategies to address these issues:</p>
+<ul>
+<li>Normalization and scaling</li>
+<li>Filtering low-quality cells/genes</li>
+<li>Imputation or pseudobulk aggregation</li>
+</ul>
+<p>These steps ensure more accurate downstream analysis like clustering or differential expression.</p>
 </div>
 <div id="data-imputation-data-smoothing" class="section level2 hasAnchor" number="3.14">
 <h2><span class="header-section-number">3.14</span> Data imputation / Data Smoothing<a href="single-cell-rna-seq-data-processing-and-quality-control.html#data-imputation-data-smoothing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -571,7 +636,7 @@ this process called <em>data smoothing</em> (eg <em>data imputation</em>).</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Smoothing"></span>
 <img src="figures/smoothing.PNG" alt="Representation of Data imputation / Data Smoothing in single-cell RNA-seq data" width="60%" />
 <p class="caption">
-FIGURE 3.21: Representation of Data imputation / Data Smoothing in single-cell RNA-seq data
+FIGURE 3.25: Representation of Data imputation / Data Smoothing in single-cell RNA-seq data
 </p>
 </div>
 <p>Imputation may be beneficial however, we must be careful with over smoothing.
@@ -595,7 +660,7 @@ modeling</li>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:MAGIC"></span>
 <img src="figures/MAGIC.png" alt="Imputation with MAGIC [-@VanDijk2018]" width="80%" />
 <p class="caption">
-FIGURE 3.22: Imputation with MAGIC <span class="citation">(<a href="#ref-VanDijk2018">2018</a>)</span>
+FIGURE 3.26: Imputation with MAGIC <span class="citation">(<a href="#ref-VanDijk2018">2018</a>)</span>
 </p>
 </div>
 <p><strong>MAGIC</strong> is one of the sophisticated imputation/smoothing methods. <strong>MAGIC</strong>
@@ -605,7 +670,7 @@ gene scores based on this signal. The overall <strong>MAGIC</strong> workflow is
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:MAGIC2"></span>
 <img src="figures/MAGIC2.PNG" alt="The MAGIC workflow [-@VanDijk2018]" width="40%" />
 <p class="caption">
-FIGURE 3.23: The MAGIC workflow <span class="citation">(<a href="#ref-VanDijk2018">2018</a>)</span>
+FIGURE 3.27: The MAGIC workflow <span class="citation">(<a href="#ref-VanDijk2018">2018</a>)</span>
 </p>
 </div>
 <p><strong>MAGIC</strong> calculates the distance between neighbors and, the affinity of the
@@ -615,7 +680,7 @@ impute the features. <span class="citation">Dijk et al. (<a href="#ref-VanDijk20
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:MAGIC3"></span>
 <img src="figures/MAGIC3.png" alt="The formulas used in MAGIC imputation [-@VanDijk2018]" width="65%" />
 <p class="caption">
-FIGURE 3.24: The formulas used in MAGIC imputation <span class="citation">(<a href="#ref-VanDijk2018">2018</a>)</span>
+FIGURE 3.28: The formulas used in MAGIC imputation <span class="citation">(<a href="#ref-VanDijk2018">2018</a>)</span>
 </p>
 </div>
 
@@ -647,11 +712,23 @@ Eding, Matt. 2009. <span>“<span>Sparse Matrices</span>.”</span> In, 419–44
 <div id="ref-Hafemeister2019" class="csl-entry">
 Hafemeister, Christoph, and Rahul Satija. 2019. <span>“<span class="nocase">Normalization and variance stabilization of single-cell RNA-seq data using regularized negative binomial regression</span>.”</span> <em>Genome Biology</em> 20 (1): 1–15. <a href="https://doi.org/10.1186/S13059-019-1874-1/FIGURES/6">https://doi.org/10.1186/S13059-019-1874-1/FIGURES/6</a>.
 </div>
+<div id="ref-Kang2018" class="csl-entry">
+Kang, Hyun Min, Manasa Subramaniam, Sheila Targ, Mai Nguyen, Lenka Maliskova, Erin McCarthy, Emily Wan, et al. 2018. <span>“Multiplexed Droplet Single-Cell RNA-Sequencing Using Natural Genetic Variation.”</span> <em>Nature Biotechnology</em> 36 (1): 89–94. <a href="https://doi.org/10.1038/nbt.4042">https://doi.org/10.1038/nbt.4042</a>.
+</div>
+<div id="ref-Kharchenko2014" class="csl-entry">
+Kharchenko, Peter V, Lev Silberstein, and David T Scadden. 2014. <span>“Bayesian Approach to Single-Cell Differential Expression Analysis.”</span> <em>Nature Methods</em> 11: 740–42. <a href="https://doi.org/10.1038/nmeth.2967">https://doi.org/10.1038/nmeth.2967</a>.
+</div>
 <div id="ref-Lun2019" class="csl-entry">
 Lun, Aaron, Samantha Riesenfeld, Tallulah Andrews, The Dao, Tomas Gomes, and John Marioni. 2019. <span>“EmptyDrops: Distinguishing Cells from Empty Droplets in Droplet-Based Single-Cell RNA Sequencing Data.”</span> <em>Genome Biology</em> 20 (March): 63. <a href="https://doi.org/10.1186/s13059-019-1662-y">https://doi.org/10.1186/s13059-019-1662-y</a>.
 </div>
+<div id="ref-McGinnis2019" class="csl-entry">
+McGinnis, Christopher S, Lauren M Murrow, and Zev J Gartner. 2019. <span>“DoubletFinder: Doublet Detection in Single-Cell RNA Sequencing Data Using Artificial Nearest Neighbors.”</span> <em>Cell Systems</em> 8 (4): 329–337.e4. <a href="https://doi.org/10.1016/j.cels.2019.03.003">https://doi.org/10.1016/j.cels.2019.03.003</a>.
+</div>
 <div id="ref-Piper2017" class="csl-entry">
 Mistry, M. Freeman, B. Piper, M. 2017. <span>“<span class="nocase">Alignment with STAR | Introduction to RNA-Seq using high-performance computing</span>.”</span> <a href="https://hbctraining.github.io/Intro-to-rnaseq-hpc-O2/lessons/03_alignment.html">https://hbctraining.github.io/Intro-to-rnaseq-hpc-O2/lessons/03_alignment.html</a>.
+</div>
+<div id="ref-Wolock2019" class="csl-entry">
+Wolock, Samuel L, Ramon Lopez, and Allon M Klein. 2019. <span>“Scrublet: Computational Identification of Cell Doublets in Single-Cell Transcriptomic Data.”</span> <em>Cell Systems</em> 8 (4): 281–291.e9. <a href="https://doi.org/10.1016/j.cels.2018.11.005">https://doi.org/10.1016/j.cels.2018.11.005</a>.
 </div>
 <div id="ref-Zhang2018" class="csl-entry">
 Zhang, Xiannian, Tianqi Li, Feng Liu, Yaqi Chen, Jiacheng Yao, Zeyao Li, Yanyi Huang, and Jianbin Wang. 2018. <span>“Comparative Analysis of Droplet-Based Ultra-High-Throughput Single-Cell RNA-Seq Systems.”</span> <em>Molecular Cell</em> 73 (November). <a href="https://doi.org/10.1016/j.molcel.2018.10.020">https://doi.org/10.1016/j.molcel.2018.10.020</a>.

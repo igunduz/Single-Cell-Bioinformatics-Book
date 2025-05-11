@@ -25,6 +25,10 @@ fig:wsnormalization
 fig:nnnormalization
 fig:Scaling
 fig:Batch
+fig:demuxlet
+fig:doubletfinder
+fig:scrublet
+fig:scissues
 fig:Smoothing
 fig:MAGIC
 fig:MAGIC2
